@@ -1,0 +1,29 @@
+{
+  "name": "officetrivia",
+  "version": "1.0.0",
+  "description": "Office Trivia Server",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JeffKersting/officeTrivia.git"
+  },
+  "author": "Jeff Kersting",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JeffKersting/officeTrivia/issues"
+  },
+  "homepage": "https://github.com/JeffKersting/officeTrivia#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "concurrently": "^6.2.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "knex": "^0.95.6",
+    "nodemon": "^2.0.7",
+    "pg": "^8.6.0"
+  }
+}
