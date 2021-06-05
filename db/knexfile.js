@@ -5,7 +5,7 @@ module.exports = {
   development: {
     client: 'postgresql',
     connection: {
-      database: 'officeTriva',
+      database: 'officetrivia',
     },
     pool: {
       min: 2,
