@@ -1,7 +1,7 @@
 const db = require('../db/db')
 
-class PersonDAO {
-  async createPerson(name, email) {
+class UserDAO {
+  async createUser(name, email) {
     const [id] = await db('user').insert({
       name: name,
       email: email
@@ -11,3 +11,5 @@ class PersonDAO {
     return id;
   }
 }
+
+module.exports = new UserDAO()
