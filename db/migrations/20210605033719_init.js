@@ -1,17 +1,18 @@
 
 exports.up = function(knex) {
   return knex.schema
+    .createTable('groups', table => {
+      table.increments('id').primary()
+      table.string('group_name')
+      table.timestamps(true, true)
+    })
     .createTable('users', table => {
       table.increments('id').primary()
       table.string('name').notNullable().unique()
       table.string('email').notNullable().unique()
-      table.timestamps(true, true)
-    })
-    .createTable('groups', table => {
-      table.integer('user_id').unsigned().primary()
-      table.foreign('user_id').references('users.id')
       table.integer('daily_score')
-      table.string('group_name')
+      table.integer('group_id').unsigned()
+      table.foreign('group_id').references('groups.id')
       table.timestamps(true, true)
     })
     .createTable('questions', table => {
@@ -30,4 +31,5 @@ exports.down = function(knex) {
   return knex.schema
     .dropTable('users')
     .dropTable('groups')
+    .dropTable('questions')
 };
