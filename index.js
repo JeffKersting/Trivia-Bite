@@ -8,7 +8,7 @@ app.use(express.json())
 app.use(router)
 
 // cron.schedule('0 0 24 * * *') 24 HOUR SETUP
-cron.schedule('* * * * * ', () => {
+cron.schedule('0 1 * * * ', () => {
   getQuestions()
   console.log('Fetching questions...')
 })
