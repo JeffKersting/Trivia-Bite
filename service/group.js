@@ -2,7 +2,7 @@ const groupDAO = require('../dao/group')
 
 class GroupService {
   createGroup(groupDto) {
-    const {userId, groupName} = personDto
+    const {userId, groupName} = groupDto
     return groupDAO.createGroup(userId, groupName)
   }
 }
