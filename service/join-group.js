@@ -3,7 +3,7 @@ const db = require('../db/db')
 
 const getGroupId = async (groupName) => {
   try {
-    const groupId = await db('groups').where({ group_name: groupName}).select('id')
+    const groupId = await db('groups').update({}).where({ group_name: groupName}).select('id')
     return groupId[0]['id']
   } catch (err) {
     console.log(err)
