@@ -1,17 +1,19 @@
 const joinDAO = require('../dao/join-group')
+const db = require('../db/db')
 
 const getGroupId = async (groupName) => {
   try {
-    const groupId = await knex('groups').where({ group_name: groupName}).fetchValue('id')
-    return groupId
+    const groupId = await db('groups').where({ group_name: groupName}).select('id')
+    return groupId[0]['id']
   } catch (err) {
-    res.status(500).json({ error })
+    console.log(err)
   }
 }
 
 class JoinGroupService {
-  joinGroup(joinDto) {
+  joinGroup = async (joinDto) => {
     const {userId, groupName} = joinDto
+    const groupId = await getGroupId(groupName)
     return joinDAO.joinGroup(userId, groupName)
   }
 }

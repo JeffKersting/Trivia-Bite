@@ -8,9 +8,9 @@ app.use(express.json())
 app.use(router)
 
 // cron.schedule('0 0 24 * * *') 24 HOUR SETUP
-cron.schedule('* * * * * ', () => {
-  getQuestions()
-  console.log('Fetching questions...')
-})
+// cron.schedule('* * * * * ', () => {
+//   getQuestions()
+//   console.log('Fetching questions...')
+// })
 
 app.listen(8080, () => console.log('server listening on port 8080'))
