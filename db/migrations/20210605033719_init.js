@@ -3,7 +3,7 @@ exports.up = function(knex) {
   return knex.schema
     .createTable('groups', table => {
       table.increments('id').primary()
-      table.string('group_name')
+      table.string('group_name').unique()
       table.timestamps(true, true)
     })
     .createTable('users', table => {
