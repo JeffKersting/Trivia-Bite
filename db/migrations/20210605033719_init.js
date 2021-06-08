@@ -8,7 +8,7 @@ exports.up = function(knex) {
       table.timestamps(true, true)
     })
     .createTable('groups', table => {
-      table.increments('user_id').unsigned()
+      table.integer('user_id').unsigned().primary()
       table.foreign('user_id').references('users.id')
       table.integer('daily_score')
       table.string('group_name')
