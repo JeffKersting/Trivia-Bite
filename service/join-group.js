@@ -14,7 +14,7 @@ class JoinGroupService {
   joinGroup = async (joinDto) => {
     const {userId, groupName} = joinDto
     const groupId = await getGroupId(groupName)
-    return joinDAO.joinGroup(userId, groupName)
+    return joinDAO.joinGroup(userId, groupId)
   }
 }
 
