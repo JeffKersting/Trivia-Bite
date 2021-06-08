@@ -6,7 +6,7 @@ class GroupDAO {
       user_id: userId,
       group_name: groupName
     })
-    .returning('id')
+    .returning('user_id')
 
     return id;
   }
