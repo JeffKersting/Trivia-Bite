@@ -9,7 +9,7 @@ class JoinGroupDAO {
       .returning('group_id')
 
     } catch(err) {
-      response.status(500).json({ error: err.message })
+      console.log(err)
     }
   }
 }
