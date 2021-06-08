@@ -5,10 +5,10 @@ class QuestionsDAO {
     const [id] = await db('questions').insert({
       category: category,
       question: question,
-      correct: correct,
-      incorrect1: incorrect1,
-      incorrect2: incorrect2,
-      incorrect3: incorrect3
+      correct_answer: correct,
+      incorrect_1: incorrect1,
+      incorrect_2: incorrect2,
+      incorrect_3: incorrect3
     })
     .returning('id')
 
