@@ -9,7 +9,7 @@ const router = express.Router()
 router.post('/user', userController.createUser)
 router.post('/group', groupController.createGroup)
 router.post('/join', joinController.joinGroup)
-router.post('questions', getQuestionsController.getQuestions)
+router.get('/questions', getQuestionsController.getQuestions)
 
 
 module.exports = router
