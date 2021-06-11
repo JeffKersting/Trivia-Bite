@@ -1,9 +1,10 @@
 import { Switch, Route, Redirect } from 'react-router-dom'
+import Login from '../login/Login'
 
 function App() {
   return (
     <div className="App">
-      <div>Test</div>
+      <Login />
     </div>
   );
 }
