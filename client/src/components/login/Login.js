@@ -3,9 +3,14 @@ import { GoogleLogin } from 'react-google-login'
 
 function Login() {
 
-  
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [url, setUrl] = useState('')
+
   const responseGoogle = (response) => {
-    console.log(response)
+    console.log(response.qc.id_token)
+    setEmail(response.profileObj.email)
+    setName(response.profileObj.name)
   }
 
   return (
