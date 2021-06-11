@@ -1,9 +1,11 @@
 const express = require('express')
 const cron = require('node-cron')
 const router = require('./routes')
+const cors = require('cors')
 const getQuestions = require('./cron-jobs/questions')
 
 const app = express()
+app.use(cors())
 app.use(express.json())
 app.use(router)
 
