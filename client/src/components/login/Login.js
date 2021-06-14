@@ -14,7 +14,7 @@ function Login({ setEmail }) {
         email: response.profileObj.email,
         token: response.qc.id_token
       }
-    })
+    });
   }
 
   return (
