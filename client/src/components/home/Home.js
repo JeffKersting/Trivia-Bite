@@ -15,7 +15,6 @@ function Home({ email }) {
     })
 
     setQuestions(questions)
-    console.log(questions[0].category)
   }
 
   useEffect(() => {
