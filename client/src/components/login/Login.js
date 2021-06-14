@@ -1,17 +1,11 @@
-import { useState } from 'react'
 import { GoogleLogin } from 'react-google-login'
 import axios from 'axios'
 
-function Login() {
-
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [token, setToken] = useState('')
+function Login({ setEmail }) {
 
   const responseGoogle = (response) => {
-    setName(response.profileObj.name)
+
     setEmail(response.profileObj.email)
-    setToken(response.qc.id_token)
     axios({
       method: 'POST',
       url: 'http://localhost:8080/user',
@@ -20,7 +14,7 @@ function Login() {
         email: response.profileObj.email,
         token: response.qc.id_token
       }
-    })
+    });
   }
 
   return (
