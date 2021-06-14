@@ -8,13 +8,20 @@ function Home({ email }) {
 
   const getQuestions = async () => {
     const questions = []
-    const group = []
     const questionsData = await axios.get('http://localhost:8080/questions')
     questionsData.data.forEach(question => {
       questions.push(question)
     })
-
     setQuestions(questions)
+  }
+
+  const getGroup = async () => {
+    const group = []
+    const groupData = await axios.get('http://localhost:8080/group')
+    groupData.data.forEach(member => {
+      group.push({name: member.name, score: member.daily_score})
+    })
+    setGroup(group)
   }
 
   useEffect(() => {
