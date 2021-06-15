@@ -1,8 +1,7 @@
 import { GoogleLogin } from 'react-google-login'
 import axios from 'axios'
 
-function Login({ setEmail }) {
-
+function Login({ setEmail, email }) {
   const responseGoogle = (response) => {
 
     setEmail(response.profileObj.email)

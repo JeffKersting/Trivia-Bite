@@ -13,7 +13,7 @@ class GroupController {
 
   async getGroupData(req, res) {
     try {
-      const groupData = await groupService.getGroupData(req.body)
+      const groupData = await groupService.getGroupData(req.query)
       res.status(201).json(groupData)
     } catch (err) {
       console.log(err)

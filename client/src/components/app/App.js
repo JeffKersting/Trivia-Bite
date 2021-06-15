@@ -15,7 +15,7 @@ function App() {
           path='/login'
           render={() => {
             return (
-              <Login setEmail={setEmail} />
+              <Login setEmail={setEmail} email={email}/>
             )}
           }
         />
