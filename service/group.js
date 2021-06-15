@@ -7,6 +7,7 @@ class GroupService {
   }
 
   getGroupData(groupDto) {
+    console.log('GROUP SERVICE DTO*****', groupDto)
     const {groupId} = groupDto
     return groupDAO.getGroupData(groupId)
   }

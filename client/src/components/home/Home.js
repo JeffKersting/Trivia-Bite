@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Quiz from '../quiz/Quiz'
+import Sidebar from '../sidebar/Sidebar'
 
 function Home({ email }) {
   const [questions, setQuestions] = useState('')
-  const [group, setGroup] = useState('')
 
   const getQuestions = async () => {
     const questions = []
@@ -22,7 +22,8 @@ function Home({ email }) {
   return (
     <>
       <div>Welcome {email}</div>
-      <Quiz questions={questions} />
+      <Sidebar />
+      {questions && <Quiz questions={questions} />}
     </>
   )
 }
