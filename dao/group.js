@@ -14,6 +14,16 @@ class GroupDAO {
       .returning('group_id')
     }
   }
+
+  async getGroupData(groupId) {
+    console.log('GROUP DAO', groupId)
+    try {
+      const groupData = await db('users').where({ group_id: groupId}).select('*')
+      return groupData
+    } catch(err) {
+      console.log(err)
+    }
+  }
 }
 
 module.exports = new GroupDAO()
