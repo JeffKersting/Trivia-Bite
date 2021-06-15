@@ -20,11 +20,12 @@ function Home({ email }) {
   }, [])
 
   return (
-    <>
-      <div>Welcome {email}</div>
+    <div className='home'>
       <Sidebar />
-      {questions && <Quiz questions={questions} />}
-    </>
+      <div>
+        {questions && <Quiz questions={questions} />}
+      </div>
+    </div>
   )
 }
 

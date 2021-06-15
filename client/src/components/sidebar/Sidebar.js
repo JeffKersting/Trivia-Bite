@@ -11,7 +11,7 @@ function Sidebar() {
         groupId: '1'
       }
     })
-    setGroup(groupData.data)
+    setGroup(groupData.data.sort((a,b) => b.daily_score - a.daily_score))
   }
 
   useEffect(() => {
@@ -19,10 +19,16 @@ function Sidebar() {
   }, [])
 
   return (
-    <>
-      <div>Sidebar</div>
-      { group && group.map((member, index) => <GroupMembers member={member} key={index}/>) }
-    </>
+    <div className='sidebar'>
+      <div className='user'>
+        <div>Welcome User</div>
+        <div>User Data</div>
+      </div>
+      <div className='group'>
+        <div>Todays Scoreboard</div>
+        { group && group.map((member, index) => <GroupMembers member={member} key={index}/>) }
+      </div>
+    </div>
   )
 }
 
