@@ -3,8 +3,8 @@ import Question from '../question/Question'
 
 function Quiz({ questions, userScore }) {
   const [quizRunning, setRunning] = useState(false)
-  const [currentQuestion, setCurrentQuestion] = useState(0)
-  const [score, setScore] = useState(userScore)
+  let [currentQuestion, setCurrentQuestion] = useState(0)
+  let [score, setScore] = useState(userScore)
   let time = 150
 
   const checkScore = () => {
@@ -27,8 +27,14 @@ function Quiz({ questions, userScore }) {
       if (!score) setScore(1)
       return
     } else {
-      setTimeout(() => updateQuiz(), 100)
+      setTimeout(() => updateQuiz(), 1000)
     }
+  }
+
+  const submitAnswer = (response) => {
+    if (response) setScore(score = score + 100)
+    if (currentQuestion === 8) setRunning(false)
+    setCurrentQuestion(currentQuestion += 1)
   }
 
   useEffect(() => {
@@ -38,8 +44,15 @@ function Quiz({ questions, userScore }) {
 
   return (
     <div className='quiz'>
+      <div>{time}</div>
+      <div>{score}</div>
       {!quizRunning && checkScore()}
-      {quizRunning && <Question question={questions[currentQuestion]} /> }
+      {quizRunning &&
+        <Question
+          question={questions[currentQuestion]}
+          submitAnswer={submitAnswer}
+        />
+      }
     </div>
   )
 }

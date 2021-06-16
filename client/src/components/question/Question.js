@@ -1,4 +1,4 @@
-function Question({ question }) {
+function Question({ question, submitAnswer }) {
 
   const correctAnswer = question.correct_answer.replace(/&qu/g,'').replace(/ot\;/g,'')
 
@@ -21,7 +21,7 @@ function Question({ question }) {
   }
 
   const checkAnswer = (e) => {
-    e.target.innerText === correctAnswer ? console.log('correct') : console.log('incorrect')
+    e.target.innerText === correctAnswer ? submitAnswer(true) : submitAnswer(false)
   }
 
   return (
