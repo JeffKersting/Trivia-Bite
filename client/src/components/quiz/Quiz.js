@@ -5,7 +5,6 @@ function Quiz({ questions, userScore }) {
   const [quizRunning, setRunning] = useState(false)
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [score, setScore] = useState(userScore)
-  // let [timer, setTimer] = useState(300)
   let time = 150
 
   const checkScore = () => {
@@ -25,6 +24,7 @@ function Quiz({ questions, userScore }) {
     time -= 1
     if (time === 0) {
       setRunning(false)
+      if (!score) setScore(1)
       return
     } else {
       setTimeout(() => updateQuiz(), 100)
