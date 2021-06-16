@@ -6,6 +6,7 @@ import Sidebar from '../sidebar/Sidebar'
 function Home({ email }) {
   const [questions, setQuestions] = useState('')
   const [userData, setUserData] = useState('')
+  const [quizRunning, setRunning] = useState(false)
 
   const getQuestions = async () => {
     const questions = []
@@ -25,6 +26,18 @@ function Home({ email }) {
     setUserData(userData.data[0])
   }
 
+  const beginQuiz = () => {
+    setRunning(true)
+  }
+
+  const checkUserDaily = () => {
+    if (!userData.daily_score) {
+      return <button onClick={beginQuiz}>Take Quiz</button>
+    } else {
+      return <div>You have already taken todays quiz</div>
+    }
+  }
+
   useEffect(() => {
     getQuestions()
     getUserData()
@@ -33,9 +46,14 @@ function Home({ email }) {
   return (
     <div className='home'>
       <Sidebar />
-      <div>
-        {questions && <Quiz questions={questions} userScore={userData.daily_score}/>}
-      </div>
+      {!quizRunning && checkUserDaily()}
+      {quizRunning &&
+        <Quiz
+          questions={questions}
+          userScore={userData.daily_score}
+          setRunning={setRunning}
+        />
+      }
     </div>
   )
 }

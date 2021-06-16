@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-function Timer({ endQuiz }) {
+function Timer() {
   let [timer, setTimer] = useState(150)
   let time = 150
 
@@ -8,7 +8,6 @@ function Timer({ endQuiz }) {
     time -= 1
     setTimer(time)
     if (time === 0) {
-      endQuiz()
       return
     } else {
       setTimeout(() => updateTimer(), 1000)
@@ -20,7 +19,7 @@ function Timer({ endQuiz }) {
   }, [])
 
   return (
-    <div>{timer}</div>
+    <div>Time Left: {timer}</div>
   )
 }
 
