@@ -10,6 +10,16 @@ class UserDAO {
 
     return id;
   }
+
+  async getUserData(userEmail) {
+    console.log('USER EMAIL *******', userEmail)
+    try {
+      const userData = await db('users').where({ email: userEmail}).select('*')
+      return userData
+    } catch(err) {
+      console.log(err)
+    }
+  }
 }
 
 module.exports = new UserDAO()

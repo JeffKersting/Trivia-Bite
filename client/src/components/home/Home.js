@@ -15,8 +15,18 @@ function Home({ email }) {
     setQuestions(questions)
   }
 
+  const getUserData = async () => {
+    const userData = await axios.get('http://localhost:8080/user', {
+      params: {
+        userEmail: 'jeff.w.kersting@gmail.com'
+      }
+    })
+    console.log('CLIENT USER DATA', userData)
+  }
+
   useEffect(() => {
     getQuestions()
+    getUserData()
   }, [])
 
   return (

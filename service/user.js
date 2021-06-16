@@ -8,7 +8,7 @@ class UserService {
 
   getUserData(userDto) {
     const { userEmail } = userDto
-    return groupDAO.getUserData(userEmail)
+    return userDAO.getUserData(userEmail)
   }
 }
 
