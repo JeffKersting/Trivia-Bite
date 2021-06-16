@@ -5,6 +5,7 @@ import Sidebar from '../sidebar/Sidebar'
 
 function Home({ email }) {
   const [questions, setQuestions] = useState('')
+  const [userData, setUserData] = useState('')
 
   const getQuestions = async () => {
     const questions = []
@@ -15,8 +16,18 @@ function Home({ email }) {
     setQuestions(questions)
   }
 
+  const getUserData = async () => {
+    const userData = await axios.get('http://localhost:8080/user', {
+      params: {
+        userEmail: email
+      }
+    })
+    setUserData(userData.data[0])
+  }
+
   useEffect(() => {
     getQuestions()
+    getUserData()
   }, [])
 
   return (

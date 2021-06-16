@@ -11,6 +11,7 @@ router.post('/group', groupController.createGroup)
 router.post('/join', joinController.joinGroup)
 router.get('/questions', getQuestionsController.getQuestions)
 router.get('/group', groupController.getGroupData)
+router.get('/user', userController.getUserData)
 
 
 module.exports = router
