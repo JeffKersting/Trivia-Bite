@@ -9,6 +9,15 @@ class UserController {
       console.error(err)
     }
   }
+
+  async getUserData(req, res) {
+    try {
+      const userData = await userService.getUserData(req.query)
+      res.status(201).json(userData)
+    } catch (err) {
+      console.error(err)
+    }
+  }
 }
 
 module.exports = new UserController()
