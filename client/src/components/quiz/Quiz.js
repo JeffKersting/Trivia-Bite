@@ -2,14 +2,14 @@ import Question from '../question/Question'
 
 function Quiz({ questions }) {
   return (
-    <>
-      <div>Hello</div>
+    <div className='quiz'>
+
       {
         questions.map((question, index) =>
           <Question question={question} key={index}/>
         )
       }
-    </>
+    </div>
   )
 }
 
