@@ -34,7 +34,7 @@ function Home({ email }) {
     <div className='home'>
       <Sidebar />
       <div>
-        {questions && <Quiz questions={questions} />}
+        {questions && <Quiz questions={questions} userScore={userData.daily_score}/>}
       </div>
     </div>
   )
