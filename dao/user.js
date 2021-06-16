@@ -12,7 +12,6 @@ class UserDAO {
   }
 
   async getUserData(userEmail) {
-    console.log('USER EMAIL *******', userEmail)
     try {
       const userData = await db('users').where({ email: userEmail}).select('*')
       return userData
