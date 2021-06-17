@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import axiosRequests from '../../api/axios'
 import Quiz from '../quiz/Quiz'
 import Sidebar from '../sidebar/Sidebar'
 
@@ -38,6 +39,10 @@ function Home({ email }) {
     }
   }
 
+  const update = () => {
+    axiosRequests.updateUserScore(21, 2000)
+  }
+
   useEffect(() => {
     getQuestions()
     getUserData()
@@ -54,6 +59,7 @@ function Home({ email }) {
           setRunning={setRunning}
         />
       }
+      <button onClick={update}>Update Score</button>
     </div>
   )
 }
