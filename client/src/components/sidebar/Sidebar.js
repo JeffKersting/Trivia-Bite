@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import axios from 'axios'
 import axiosRequests from '../../api/axios'
 import GroupMembers from './group-members/Group-Members'
 
@@ -13,7 +12,6 @@ function Sidebar({ groupId}) {
 
   useEffect(() => {
     getGroup()
-
   }, [])
 
   return (
