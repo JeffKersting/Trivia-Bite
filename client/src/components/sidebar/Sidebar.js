@@ -1,16 +1,13 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import axiosRequests from '../../api/axios'
 import GroupMembers from './group-members/Group-Members'
 
 function Sidebar() {
   const [group, setGroup] = useState(null)
 
   const getGroup = async () => {
-    const groupData = await axios.get('http://localhost:8080/group', {
-      params: {
-        groupId: '1'
-      }
-    })
+    const groupData = await axiosRequests.getGroupData(1)
     setGroup(groupData.data.sort((a,b) => b.daily_score - a.daily_score))
   }
 

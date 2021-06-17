@@ -27,6 +27,14 @@ const fetchRequests = {
     })
   },
 
+  getGroupData: (groupId) => {
+    return axios.get('http://localhost:8080/group', {
+      params: {
+        groupId: groupId
+      }
+    })
+  },
+
   updateUserScore: (userId, score) => {
     axios.patch('http://localhost:8080/user', {
       params: {
