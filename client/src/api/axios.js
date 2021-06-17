@@ -14,6 +14,14 @@ const fetchRequests = {
 
   },
 
+  getUserData: (userEmail) => {
+    return axios.get('http://localhost:8080/user', {
+      params: {
+        userEmail: userEmail
+      }
+    })
+  },
+
   updateUserScore: (userId, score) => {
     axios.patch('http://localhost:8080/user', {
       params: {
