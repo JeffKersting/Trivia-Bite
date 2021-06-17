@@ -18,6 +18,15 @@ class UserController {
       console.error(err)
     }
   }
+
+  async updateUserScore(req, res) {
+    try {
+      userService.updateUserScore(req.query)
+      res.status(201)
+    } catch (err) {
+      console.error(err)
+    }
+  }
 }
 
 module.exports = new UserController()
