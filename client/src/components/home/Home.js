@@ -38,7 +38,7 @@ function Home({ email }) {
 
   return (
     <div className='home'>
-      <Sidebar />
+      {userData && <Sidebar groupId={userData.group_id}/>}
       {!quizRunning && checkUserDaily()}
       {quizRunning &&
         <Quiz

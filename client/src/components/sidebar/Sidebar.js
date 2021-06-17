@@ -3,16 +3,17 @@ import axios from 'axios'
 import axiosRequests from '../../api/axios'
 import GroupMembers from './group-members/Group-Members'
 
-function Sidebar() {
-  const [group, setGroup] = useState(null)
+function Sidebar({ groupId}) {
+  const [group, setGroup] = useState([])
 
   const getGroup = async () => {
-    const groupData = await axiosRequests.getGroupData(1)
-    setGroup(groupData.data.sort((a,b) => b.daily_score - a.daily_score))
+    const groupData = await axiosRequests.getGroupData(groupId)
+    setGroup(groupData.sort((a,b) => b.daily_score - a.daily_score))
   }
 
   useEffect(() => {
     getGroup()
+
   }, [])
 
   return (
@@ -22,7 +23,7 @@ function Sidebar() {
         <div>User Data</div>
       </div>
       <div className='group'>
-        <div>Todays Scoreboard</div>
+        <div>Leaderboard</div>
         { group && group.map((member, index) => <GroupMembers member={member} key={index}/>) }
       </div>
     </div>
