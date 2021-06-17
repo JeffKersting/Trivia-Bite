@@ -4,16 +4,13 @@ import axiosRequests from '../../api/axios'
 import Quiz from '../quiz/Quiz'
 import Sidebar from '../sidebar/Sidebar'
 
-function Home({ email }) {
+function Home({ user }) {
   const [questions, setQuestions] = useState('')
-  const [userData, setUserData] = useState('')
   const [quizRunning, setRunning] = useState(false)
 
   const getData = async () => {
     const questions = await axiosRequests.getQuestions()
-    const userData = await axiosRequests.getUserData(email)
     setQuestions(questions)
-    setUserData(userData.data[0])
   }
 
   const beginQuiz = () => {
@@ -21,7 +18,7 @@ function Home({ email }) {
   }
 
   const checkUserDaily = () => {
-    if (!userData.daily_score) {
+    if (!user.daily_score) {
       return <button onClick={beginQuiz}>Take Quiz</button>
     } else {
       return <div>You have already taken todays quiz</div>
@@ -38,12 +35,12 @@ function Home({ email }) {
 
   return (
     <div className='home'>
-      {userData && <Sidebar groupId={userData.group_id}/>}
+      {user && <Sidebar groupId={user.group_id}/>}
       {!quizRunning && checkUserDaily()}
       {quizRunning &&
         <Quiz
           questions={questions}
-          userScore={userData.daily_score}
+          userScore={user.daily_score}
           setRunning={setRunning}
         />
       }

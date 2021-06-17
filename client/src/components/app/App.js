@@ -1,14 +1,11 @@
 import { Switch, Route, Redirect } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Login from '../login/Login'
 import Home from '../home/Home'
 
 function App() {
   const [user, setUser] = useState(null)
 
-  useEffect(() => {
-    console.log(window.localStorage)
-  }, [])
 
   return (
     <div className="App">
@@ -27,7 +24,10 @@ function App() {
           path='/home'
           render={() => {
             return (
-              <Home user={user} />
+              <>
+                {!user && <Redirect to='/login' />}
+                {user && <Home user={user} />}
+              </>
             )}
           }
         />
