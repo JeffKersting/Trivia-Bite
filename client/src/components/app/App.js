@@ -4,7 +4,7 @@ import Login from '../login/Login'
 import Home from '../home/Home'
 
 function App() {
-  const [email, setEmail] = useState(null)
+  const [user, setUser] = useState(null)
 
   useEffect(() => {
     console.log(window.localStorage)
@@ -12,14 +12,14 @@ function App() {
 
   return (
     <div className="App">
-      {!email && <Redirect to='/login' />}
-      {email && <Redirect to='/home' />}
+      {!user && <Redirect to='/login' />}
+      {user && <Redirect to='/home' />}
       <Switch>
         <Route
           path='/login'
           render={() => {
             return (
-              <Login setEmail={setEmail} email={email}/>
+              <Login setUser={setUser}/>
             )}
           }
         />
@@ -27,7 +27,7 @@ function App() {
           path='/home'
           render={() => {
             return (
-              <Home email={email} />
+              <Home user={user} />
             )}
           }
         />

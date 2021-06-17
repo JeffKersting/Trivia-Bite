@@ -2,15 +2,15 @@ import { GoogleLogin } from 'react-google-login'
 import axiosRequests from '../../api/axios'
 import axios from 'axios'
 
-function Login({ setEmail, email }) {
+function Login({ setUser, user }) {
   const responseGoogle = async (response) => {
 
-    setEmail(response.profileObj.email)
-    const email2 = response.profileObj.email
-    const userData = await axiosRequests.getUserData(email2)
-    console.log("LOGIN USER DATA", userData.data[0])
+    const email = response.profileObj.email
+    const userData = await axiosRequests.getUserData(email)
 
-    if (!userData) {
+    if (userData) {
+      setUser(userData.data[0])
+    } else {
       axios({
         method: 'POST',
         url: 'http://localhost:8080/user',
@@ -19,7 +19,7 @@ function Login({ setEmail, email }) {
           email: response.profileObj.email,
           token: response.qc.id_token
         }
-      });    
+      })
     }
   }
 
