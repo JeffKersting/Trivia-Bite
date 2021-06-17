@@ -9,15 +9,10 @@ function Home({ email }) {
   const [userData, setUserData] = useState('')
   const [quizRunning, setRunning] = useState(false)
 
-  const getQuestions = async () => {
+  const getData = async () => {
     const questions = await axiosRequests.getQuestions()
-    console.log(questions)
-
-    // setQuestions(questions)
-  }
-
-  const getUserData = async () => {
     const userData = await axiosRequests.getUserData(email)
+    setQuestions(questions)
     setUserData(userData.data[0])
   }
 
@@ -38,8 +33,7 @@ function Home({ email }) {
   }
 
   useEffect(() => {
-    getQuestions()
-    getUserData(email)
+    getData()
   }, [])
 
   return (
