@@ -1,19 +1,26 @@
 import { GoogleLogin } from 'react-google-login'
+import axiosRequests from '../../api/axios'
 import axios from 'axios'
 
 function Login({ setEmail, email }) {
-  const responseGoogle = (response) => {
+  const responseGoogle = async (response) => {
 
     setEmail(response.profileObj.email)
-    axios({
-      method: 'POST',
-      url: 'http://localhost:8080/user',
-      data: {
-        name: response.profileObj.name,
-        email: response.profileObj.email,
-        token: response.qc.id_token
-      }
-    });
+    const email2 = response.profileObj.email
+    const userData = await axiosRequests.getUserData(email2)
+    console.log("LOGIN USER DATA", userData.data[0])
+
+    if (!userData) {
+      axios({
+        method: 'POST',
+        url: 'http://localhost:8080/user',
+        data: {
+          name: response.profileObj.name,
+          email: response.profileObj.email,
+          token: response.qc.id_token
+        }
+      });    
+    }
   }
 
   return (
