@@ -19,6 +19,16 @@ class UserDAO {
       console.log(err)
     }
   }
+
+  async updateUserScore(userId, score) {
+    try {
+      const id = await db('users').where({ id: userId }).update({
+        daily_score: score
+      }).returning('id')
+    } catch(err) {
+      console.log(err)
+    }
+  }
 }
 
 module.exports = new UserDAO()

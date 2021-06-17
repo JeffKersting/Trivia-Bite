@@ -12,6 +12,7 @@ router.post('/join', joinController.joinGroup)
 router.get('/questions', getQuestionsController.getQuestions)
 router.get('/group', groupController.getGroupData)
 router.get('/user', userController.getUserData)
+router.patch('/user', userController.updateUserScore)
 
 
 module.exports = router
