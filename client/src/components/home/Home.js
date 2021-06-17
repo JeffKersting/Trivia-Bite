@@ -40,7 +40,7 @@ function Home({ email }) {
   }
 
   const update = () => {
-    axiosRequests.updateUserScore(21, 2000)
+    axiosRequests.updateUserScore(21, 2500)
   }
 
   useEffect(() => {
