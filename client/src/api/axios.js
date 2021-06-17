@@ -10,8 +10,30 @@ const fetchRequests = {
     return response
   },
 
-  fetchQuestions: () => {
+  getQuestions: async () => {
+    const questions = []
+    const questionsData = await axios.get('http://localhost:8080/questions')
+    questionsData.data.forEach(question => {
+      questions.push(question)
+    })
+    return questions
+  },
 
+  getUserData: (userEmail) => {
+    return axios.get('http://localhost:8080/user', {
+      params: {
+        userEmail: userEmail
+      }
+    })
+  },
+
+  getGroupData: (groupId) => {
+    return axios.get('http://localhost:8080/group', {
+      params: {
+        groupId: groupId
+      }
+    })
+    .then(data => Array.from(data.data))
   },
 
   updateUserScore: (userId, score) => {
