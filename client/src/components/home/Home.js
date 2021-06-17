@@ -10,12 +10,10 @@ function Home({ email }) {
   const [quizRunning, setRunning] = useState(false)
 
   const getQuestions = async () => {
-    const questions = []
-    const questionsData = await axios.get('http://localhost:8080/questions')
-    questionsData.data.forEach(question => {
-      questions.push(question)
-    })
-    setQuestions(questions)
+    const questions = await axiosRequests.getQuestions()
+    console.log(questions)
+
+    // setQuestions(questions)
   }
 
   const getUserData = async () => {

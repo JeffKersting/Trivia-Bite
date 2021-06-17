@@ -10,8 +10,13 @@ const fetchRequests = {
     return response
   },
 
-  fetchQuestions: () => {
-
+  getQuestions: async () => {
+    const questions = []
+    const questionsData = await axios.get('http://localhost:8080/questions')
+    questionsData.data.forEach(question => {
+      questions.push(question)
+    })
+    return questions
   },
 
   getUserData: (userEmail) => {
