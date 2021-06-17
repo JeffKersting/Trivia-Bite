@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react'
 
-function Timer() {
-  let [timer, setTimer] = useState(150)
-  let time = 150
+function Timer({ calculateScore }) {
+  let [timer, setTimer] = useState(120)
+  let time = 120
 
   const updateTimer = () => {
     time -= 1
     setTimer(time)
     if (time === 0) {
-      return
+      calculateScore(0)
     } else {
       setTimeout(() => updateTimer(), 1000)
     }
@@ -16,6 +16,8 @@ function Timer() {
 
   useEffect(() => {
     updateTimer()
+
+    return () => calculateScore(time)
   }, [])
 
   return (

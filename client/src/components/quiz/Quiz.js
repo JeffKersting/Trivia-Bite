@@ -1,36 +1,41 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import Question from '../question/Question'
 import Timer from './timer/Timer'
 
+
+
 function Quiz({ questions, userScore, setRunning }) {
   let [currentQuestion, setCurrentQuestion] = useState(0)
-  let [score, setScore] = useState(0)
-  let timerRef = useRef(null)
+  let [score, setScore] = useState(userScore)
+
 
   const endQuiz = () => {
     if (!score) setScore(1)
-    const timeScore = timerRef.current
-    console.log(timeScore)
-    console.log(timerRef)
     setRunning(false)
   }
-
 
   const submitAnswer = (response) => {
     if (response) setScore(score = score + 100)
     if (currentQuestion === 9) endQuiz()
-    setCurrentQuestion(currentQuestion += 1)
+    setCurrentQuestion(currentQuestion = currentQuestion + 1)
+  }
+
+  const calculateScore = (time) => {
+    const totalScore = (time * 10) + score
+    console.log(totalScore)
   }
 
 
   useEffect(() => {
-    setScore(userScore)
-  }, [])
 
+    return () => {
+      console.log('SCORE', score)
+    }
+  }, [])
 
   return (
     <div className='quiz'>
-      <Timer ref={timerRef}/>
+      <Timer calculateScore={calculateScore}/>
       <Question
         question={questions[currentQuestion]}
         submitAnswer={submitAnswer}
