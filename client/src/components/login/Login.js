@@ -20,6 +20,7 @@ function Login({ setUser, user }) {
       //     token: response.qc.id_token
       //   }
       // })
+      axiosRequests.postUserData(response.profileObj.name, response.profileObj.email, response.qc.id_token)
     }
   }
 
