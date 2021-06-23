@@ -1,0 +1,16 @@
+.timer-container {
+  position: relative;
+  height: 15px;
+  padding: 1px;
+  border: 1px solid black;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.timer {
+  position: absolute;
+  height: 15px;
+  background-color: red;
+  transition: 1s linear;
+  border-radius: 4px;
+}
