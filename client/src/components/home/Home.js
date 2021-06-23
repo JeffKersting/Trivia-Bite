@@ -32,9 +32,8 @@ function Home({ user }) {
   }
 
   const updateScore = () => {
-    console.log(user.id)
     const totalScore = quizScore + quizTime * 10
-    console.log("TOTAL SCORE", totalScore)
+    axiosRequests.updateUserScore(user.id, totalScore)
   }
 
   useEffect(() => {

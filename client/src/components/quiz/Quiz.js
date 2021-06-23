@@ -9,11 +9,6 @@ function Quiz({ questions, userScore, setRunning, setTime, setQuizScore, updateS
   let [score, setScore] = useState(userScore)
   const [completed, setCompleted] = useState(false)
 
-  const endQuiz = () => {
-    if (!score) setScore(1)
-    setRunning(false)
-  }
-
   const submitAnswer = (response) => {
     if (response) setScore(score = score + 100)
     if (currentQuestion === 9) setCompleted(true)
@@ -24,7 +19,6 @@ function Quiz({ questions, userScore, setRunning, setTime, setQuizScore, updateS
     setTime(time)
     setRunning(false)
   }
-
 
   useEffect(() => {
       setQuizScore(score)
