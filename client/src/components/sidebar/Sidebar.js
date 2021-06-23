@@ -14,9 +14,6 @@ function Sidebar({ user }) {
     }
   }
 
-  const joinGroup = () => {
-
-  }
 
   useEffect(() => {
     getGroup()
@@ -36,7 +33,7 @@ function Sidebar({ user }) {
         }
         { !group &&
           <>
-          <div>Looks like you aren't in a group! Join a group by group name below, or </div>
+          <div>Looks like you aren't in a group! Join a group by group name below, or create one!</div>
           <button>Join Group</button>
           <button>Create Group</button>
           </>

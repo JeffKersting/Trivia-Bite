@@ -25,6 +25,7 @@ const fetchRequests = {
         userEmail: userEmail
       }
     })
+    .then(data => data.data[0])
   },
 
   postUserData: (userName, userEmail) => {
@@ -48,12 +49,13 @@ const fetchRequests = {
   },
 
   updateUserScore: (userId, score) => {
-    axios.patch('http://localhost:8080/user', {
+    return axios.patch('http://localhost:8080/user', {
       params: {
         userId: userId,
         score: score
       }
     })
+    .then(data => data.data[0])
   }
 }
 

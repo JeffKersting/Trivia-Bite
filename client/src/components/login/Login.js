@@ -6,8 +6,8 @@ function Login({ setUser, user }) {
   const responseGoogle = async (response) => {
     const email = response.profileObj.email
     const userData = await axiosRequests.getUserData(email)
-    if (userData.data.length) {
-      setUser(userData.data[0])
+    if (userData) {
+      setUser(userData)
     } else {
       axiosRequests.postUserData(response.profileObj.name, response.profileObj.email)
     }
