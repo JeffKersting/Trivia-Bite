@@ -5,5 +5,15 @@
   border-radius: 5px;
   padding: 10px;
   display: grid;
-  grid-template-rows: .25fr 1fr
+  grid-template-rows: .25fr 1fr;
+
+  .user,
+  .group-name {
+    font-size: 1.2em;
+    text-decoration: underline;
+  }
+
+  .group-member {
+    margin-top: .2em;
+  }
 }

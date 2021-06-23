@@ -1,0 +1,32 @@
+.category {
+  font-size: 1em;
+}
+
+.question {
+  @include centerHorizontally()
+  width: 100%;
+  text-align: center;
+  font-size: 1.2em;
+  padding: 2em;
+}
+
+.answers {
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  div {
+    width: 85%;
+    text-align: center;
+    padding: 1em;
+    @include centerHorizontally();
+    background-color: lightblue;
+    border-radius: .5em;
+    cursor: pointer;
+
+    &:hover {
+      background-color: blue
+    }
+  }
+}

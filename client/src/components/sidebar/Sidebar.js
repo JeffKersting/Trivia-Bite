@@ -18,7 +18,7 @@ function Sidebar({ user }) {
     if (group) {
       return (
         <>
-          <div>{groupName}</div>
+          <div className='group-name'>{groupName}</div>
           {group.map((member, index) => <GroupMembers member={member} key={index}/>)}
         </>
       )
@@ -40,9 +40,7 @@ function Sidebar({ user }) {
 
   return (
     <div className='sidebar'>
-      <div className='user'>
-        <div>{user.name}</div>
-      </div>
+      <div className='user'>{user.name}</div>
       <div className='group'>
         {checkGroup()}
       </div>

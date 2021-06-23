@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 
 function Timer({ calculateScore }) {
-  let [timer, setTimer] = useState(120)
-  let time = 120
+  let [timer, setTimer] = useState(60)
+  let time = 60
 
   const updateTimer = () => {
     time -= 1
@@ -20,7 +20,13 @@ function Timer({ calculateScore }) {
   }, [])
 
   return (
-    <div>Time Left: {timer}</div>
+    <>
+      <div className='timer-container'>
+        <div className='timer' style={{
+          width: `${timer/60 * 100}%`
+        }}/>
+      </div>
+    </>
   )
 }
 

@@ -26,13 +26,14 @@ function Question({ question, submitAnswer }) {
 
   return (
     <>
-      <div>{question.category.replace(/&qu/g,'').replace(/ot\;/g,'')}</div>
-      <div>{question.question.replace(/&qu/g,'').replace(/ot\;/g,'')}</div>
+      <div className='category'>{question.category.replace(/&qu/g,'').replace(/ot\;/g,'')}</div>
+      <div className='question'>{question.question.replace(/&qu/g,'').replace(/ot\;/g,'')}</div>
+      <div className='answers'>
       {
         createAnswers().map((answer, index) =>
           <div onClick={checkAnswer} key={index}>{answer}</div>)
       }
-
+      </div>
 
     </>
   )

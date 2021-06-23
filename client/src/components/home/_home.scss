@@ -3,3 +3,16 @@
   grid-template-columns: .25fr 1fr;
   grid-column-gap: 2vw;
 }
+
+.startQuizBtn {
+  @include centerHorizontally()
+  margin-top: 40%;
+}
+
+.quiz-status {
+  @include centerHorizontally()
+  width: 75%;
+  text-align: center;
+  margin-top: 20%;
+  font-size: 2em;
+}
