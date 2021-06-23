@@ -14,6 +14,25 @@ function Sidebar({ user }) {
     }
   }
 
+  const checkGroup = () => {
+    if (group) {
+      return (
+        <>
+          <div>{groupName}</div>
+          {group.map((member, index) => <GroupMembers member={member} key={index}/>)}
+        </>
+      )
+    } else {
+      return (
+        <>
+          <div>Looks like you aren't in a group! Join a group by group name below, or create one!</div>
+          <button>Join Group</button>
+          <button>Create Group</button>
+        </>
+      )
+    }
+  }
+
 
   useEffect(() => {
     getGroup()
@@ -25,19 +44,7 @@ function Sidebar({ user }) {
         <div>{user.name}</div>
       </div>
       <div className='group'>
-        { group &&
-          <>
-            <div>{groupName}</div>
-            {group.map((member, index) => <GroupMembers member={member} key={index}/>)}
-          </>
-        }
-        { !group &&
-          <>
-          <div>Looks like you aren't in a group! Join a group by group name below, or create one!</div>
-          <button>Join Group</button>
-          <button>Create Group</button>
-          </>
-        }
+        {checkGroup()}
       </div>
     </div>
   )
