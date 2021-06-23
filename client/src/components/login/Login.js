@@ -4,23 +4,12 @@ import axios from 'axios'
 
 function Login({ setUser, user }) {
   const responseGoogle = async (response) => {
-
     const email = response.profileObj.email
     const userData = await axiosRequests.getUserData(email)
-
-    if (userData) {
+    if (userData.data.length) {
       setUser(userData.data[0])
     } else {
-      // axios({
-      //   method: 'POST',
-      //   url: 'http://localhost:8080/user',
-      //   data: {
-      //     name: response.profileObj.name,
-      //     email: response.profileObj.email,
-      //     token: response.qc.id_token
-      //   }
-      // })
-      axiosRequests.postUserData(response.profileObj.name, response.profileObj.email, response.qc.id_token)
+      axiosRequests.postUserData(response.profileObj.name, response.profileObj.email)
     }
   }
 

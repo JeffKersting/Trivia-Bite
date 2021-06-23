@@ -27,12 +27,13 @@ const fetchRequests = {
     })
   },
 
-  postUserData: (userName, userEmail, userToken) => {
-    return axios.post('http://localhost:8080/user', {
+  postUserData: (userName, userEmail) => {
+    return axios({
+      method: 'POST',
+      url: 'http://localhost:8080/user',
       data: {
         name: userName,
-        email: userEmail,
-        token: userToken
+        email: userEmail
       }
     })
   },
