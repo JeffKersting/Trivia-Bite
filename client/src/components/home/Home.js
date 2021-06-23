@@ -22,7 +22,7 @@ function Home({ user, setUser }) {
 
   const checkUserDaily = () => {
     if (!user.daily_score) {
-      return <button onClick={beginQuiz}>Take Quiz</button>
+      return <button className='startQuizBtn' onClick={beginQuiz}>Take Quiz</button>
     } else {
       return <div>You have taken todays Quiz. Check back tomorrow!</div>
     }

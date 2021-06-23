@@ -1,0 +1,6 @@
+$button-color: blue;
+
+@mixin centerHorizontally() {
+  margin-left: 50%;
+  transform: translateX(-50%)
+}
