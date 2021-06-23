@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect } from 'react'
 import Question from '../question/Question'
 import Timer from './timer/Timer'
 
