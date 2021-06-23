@@ -11,15 +11,15 @@ function Login({ setUser, user }) {
     if (userData) {
       setUser(userData.data[0])
     } else {
-      axios({
-        method: 'POST',
-        url: 'http://localhost:8080/user',
-        data: {
-          name: response.profileObj.name,
-          email: response.profileObj.email,
-          token: response.qc.id_token
-        }
-      })
+      // axios({
+      //   method: 'POST',
+      //   url: 'http://localhost:8080/user',
+      //   data: {
+      //     name: response.profileObj.name,
+      //     email: response.profileObj.email,
+      //     token: response.qc.id_token
+      //   }
+      // })
     }
   }
 

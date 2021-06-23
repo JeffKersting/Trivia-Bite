@@ -27,6 +27,16 @@ const fetchRequests = {
     })
   },
 
+  postUserData: (userName, userEmail, userToken) => {
+    return axios.post('http://localhost:8080/user', {
+      data: {
+        name: userName,
+        email: userEmail,
+        token: userToken
+      }
+    })
+  },
+
   getGroupData: (groupId) => {
     return axios.get('http://localhost:8080/group', {
       params: {
