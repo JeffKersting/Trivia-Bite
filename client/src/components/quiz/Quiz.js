@@ -2,8 +2,6 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import Question from '../question/Question'
 import Timer from './timer/Timer'
 
-
-
 function Quiz({ questions, userScore, setRunning, setTime, setQuizScore, updateScore }) {
   let [currentQuestion, setCurrentQuestion] = useState(0)
   let [score, setScore] = useState(userScore)

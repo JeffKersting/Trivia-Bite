@@ -27,10 +27,6 @@ function Home({ user }) {
     }
   }
 
-  const update = () => {
-    axiosRequests.updateUserScore(21, 2500)
-  }
-
   const updateScore = () => {
     const totalScore = quizScore + quizTime * 10
     axiosRequests.updateUserScore(user.id, totalScore)
@@ -60,7 +56,6 @@ function Home({ user }) {
           updateScore={updateScore}
         />
       }
-      <button onClick={update}>Update Score</button>
     </div>
   )
 }
