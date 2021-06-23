@@ -2,7 +2,7 @@ function GroupMembers({ member }) {
   if (!member.daily_score) member.daily_score = 0
 
   return (
-    <div>{member.name} : {member.daily_score}</div>
+    <div className='group-member'>{member.name} : {member.daily_score}</div>
   )
 }
 

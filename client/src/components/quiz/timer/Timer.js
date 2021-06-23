@@ -24,7 +24,7 @@ function Timer({ calculateScore }) {
       <div className='timer-container'>
         <div className='timer' style={{
           width: `${timer/60 * 100}%`
-        }}></div>
+        }}/>
       </div>
     </>
   )

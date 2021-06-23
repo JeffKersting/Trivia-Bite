@@ -24,7 +24,7 @@ function Home({ user, setUser }) {
     if (!user.daily_score) {
       return <button className='startQuizBtn' onClick={beginQuiz}>Take Quiz</button>
     } else {
-      return <div>You have taken todays Quiz. Check back tomorrow!</div>
+      return <div className='quiz-status'>You have taken todays Quiz. Check back tomorrow!</div>
     }
   }
 
