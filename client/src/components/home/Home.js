@@ -7,6 +7,8 @@ import Sidebar from '../sidebar/Sidebar'
 function Home({ user }) {
   const [questions, setQuestions] = useState('')
   const [quizRunning, setRunning] = useState(false)
+  const [quizScore, setQuizScore] = useState(null)
+  const [quizTime, setTime] = useState(null)
 
   const getData = async () => {
     const questions = await axiosRequests.getQuestions()
@@ -25,13 +27,20 @@ function Home({ user }) {
     }
   }
 
-  const update = () => {
-    axiosRequests.updateUserScore(21, 2500)
+  const updateScore = () => {
+    const totalScore = quizScore + quizTime * 10
+    axiosRequests.updateUserScore(user.id, totalScore)
   }
 
   useEffect(() => {
     getData()
   }, [])
+
+  useEffect(() => {
+    if (quizScore || quizTime) {
+      updateScore()
+    }
+  }, [quizRunning])
 
   return (
     <div className='home'>
@@ -42,9 +51,11 @@ function Home({ user }) {
           questions={questions}
           userScore={user.daily_score}
           setRunning={setRunning}
+          setQuizScore={setQuizScore}
+          setTime={setTime}
+          updateScore={updateScore}
         />
       }
-      <button onClick={update}>Update Score</button>
     </div>
   )
 }

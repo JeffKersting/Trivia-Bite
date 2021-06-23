@@ -16,7 +16,6 @@ function Timer({ calculateScore }) {
 
   useEffect(() => {
     updateTimer()
-
     return () => calculateScore(time)
   }, [])
 
