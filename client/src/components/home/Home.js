@@ -44,7 +44,7 @@ function Home({ user }) {
 
   return (
     <div className='home'>
-      {user && <Sidebar groupId={user.group_id}/>}
+      {user && <Sidebar user={user}/>}
       {!quizRunning && checkUserDaily()}
       {quizRunning &&
         <Quiz

@@ -2,12 +2,20 @@ import { useEffect, useState } from 'react'
 import axiosRequests from '../../api/axios'
 import GroupMembers from './group-members/Group-Members'
 
-function Sidebar({ groupId}) {
-  const [group, setGroup] = useState([])
+function Sidebar({ user }) {
+  const [group, setGroup] = useState(null)
+  const [groupName, setGroupName] = useState(null)
 
   const getGroup = async () => {
-    const groupData = await axiosRequests.getGroupData(groupId)
-    setGroup(groupData.sort((a,b) => b.daily_score - a.daily_score))
+    if (user.group_id) {
+      const groupData = await axiosRequests.getGroupData(user.group_id)
+      setGroupName(groupData.groupName[0].group_name)
+      setGroup(groupData.groupMembers.sort((a,b) => b.daily_score - a.daily_score))
+    }
+  }
+
+  const joinGroup = () => {
+
   }
 
   useEffect(() => {
@@ -17,12 +25,22 @@ function Sidebar({ groupId}) {
   return (
     <div className='sidebar'>
       <div className='user'>
-        <div>Welcome User</div>
-        <div>User Data</div>
+        <div>{user.name}</div>
       </div>
       <div className='group'>
-        <div>Leaderboard</div>
-        { group && group.map((member, index) => <GroupMembers member={member} key={index}/>) }
+        { group &&
+          <>
+            <div>{groupName}</div>
+            {group.map((member, index) => <GroupMembers member={member} key={index}/>)}
+          </>
+        }
+        { !group &&
+          <>
+          <div>Looks like you aren't in a group! Join a group by group name below, or </div>
+          <button>Join Group</button>
+          <button>Create Group</button>
+          </>
+        }
       </div>
     </div>
   )

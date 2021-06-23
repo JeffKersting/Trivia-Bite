@@ -44,7 +44,7 @@ const fetchRequests = {
         groupId: groupId
       }
     })
-    .then(data => Array.from(data.data))
+    .then(data => data.data)
   },
 
   updateUserScore: (userId, score) => {

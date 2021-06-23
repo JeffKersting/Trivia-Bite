@@ -17,7 +17,9 @@ class GroupDAO {
 
   async getGroupData(groupId) {
     try {
-      const groupData = await db('users').where({ group_id: groupId}).select('*')
+      const groupMembers = await db('users').where({ group_id: groupId}).select('*')
+      const groupName = await db('groups').where({ id: groupId }).returning('group_name')
+      const groupData = {groupMembers, groupName}
       return groupData
     } catch(err) {
       console.log(err)
