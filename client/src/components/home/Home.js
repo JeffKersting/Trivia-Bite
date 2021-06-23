@@ -1,18 +1,19 @@
 import { useEffect, useState } from 'react'
-import axios from 'axios'
 import axiosRequests from '../../api/axios'
 import Quiz from '../quiz/Quiz'
 import Sidebar from '../sidebar/Sidebar'
 
-function Home({ user }) {
+function Home({ user, setUser }) {
   const [questions, setQuestions] = useState('')
   const [quizRunning, setRunning] = useState(false)
   const [quizScore, setQuizScore] = useState(null)
   const [quizTime, setTime] = useState(null)
+  const [loading, setLoading] = useState(true)
 
   const getData = async () => {
     const questions = await axiosRequests.getQuestions()
     setQuestions(questions)
+    setLoading(false)
   }
 
   const beginQuiz = () => {
@@ -23,13 +24,16 @@ function Home({ user }) {
     if (!user.daily_score) {
       return <button onClick={beginQuiz}>Take Quiz</button>
     } else {
-      return <div>You have already taken todays quiz</div>
+      return <div>You have taken todays Quiz. Check back tomorrow!</div>
     }
   }
 
-  const updateScore = () => {
+  const updateScore = async () => {
+    setLoading(true)
     const totalScore = quizScore + quizTime * 10
-    axiosRequests.updateUserScore(user.id, totalScore)
+    const updatedUserData = await axiosRequests.updateUserScore(user.id, totalScore)
+    setUser(updatedUserData)
+    setLoading(false)
   }
 
   useEffect(() => {
@@ -43,19 +47,25 @@ function Home({ user }) {
   }, [quizRunning])
 
   return (
+
     <div className='home'>
-      {user && <Sidebar groupId={user.group_id}/>}
-      {!quizRunning && checkUserDaily()}
-      {quizRunning &&
-        <Quiz
-          questions={questions}
-          userScore={user.daily_score}
-          setRunning={setRunning}
-          setQuizScore={setQuizScore}
-          setTime={setTime}
-          updateScore={updateScore}
-        />
+      { !loading &&
+        <>
+          <Sidebar user={user} />
+          {!quizRunning && checkUserDaily()}
+          {quizRunning &&
+            <Quiz
+            questions={questions}
+            userScore={user.daily_score}
+            setRunning={setRunning}
+            setQuizScore={setQuizScore}
+            setTime={setTime}
+            updateScore={updateScore}
+            />
+          }
+        </>
       }
+      { loading && <div>Loading...</div>}
     </div>
   )
 }

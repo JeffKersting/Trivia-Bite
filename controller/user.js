@@ -21,8 +21,8 @@ class UserController {
 
   async updateUserScore(req, res) {
     try {
-      userService.updateUserScore(req.body.params)
-      res.status(201)
+      const updatedUserData = await userService.updateUserScore(req.body.params)
+      res.status(201).json(updatedUserData)
     } catch (err) {
       console.error(err)
     }

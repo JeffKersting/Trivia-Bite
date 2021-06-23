@@ -26,7 +26,7 @@ function App() {
             return (
               <>
                 {!user && <Redirect to='/login' />}
-                {user && <Home user={user} />}
+                {user && <Home user={user} setUser={setUser}/>}
               </>
             )}
           }

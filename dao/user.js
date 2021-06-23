@@ -22,9 +22,10 @@ class UserDAO {
 
   async updateUserScore(userId, score) {
     try {
-      const id = await db('users').where({ id: userId }).update({
+      const userData = await db('users').where({ id: userId }).update({
         daily_score: score
-      }).returning('id')
+      }).returning('*')
+      return userData
     } catch(err) {
       console.log(err)
     }
