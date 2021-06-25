@@ -15,9 +15,10 @@ function Sidebar({ user }) {
     }
   }
 
-  // const joinGroup = async () => {
-  //
-  // }
+  const formHandler = async (type, groupInput) => {
+    console.log("TARGET NAME", type)
+    console.log('GROUP INPUT', groupInput)
+  }
 
   const checkGroup = () => {
     if (group) {
@@ -31,7 +32,7 @@ function Sidebar({ user }) {
       return (
         <>
           <div>Looks like you aren't in a group! Join a group by group name below, or create one!</div>
-          <GroupForm />
+          <GroupForm formHandler={formHandler}/>
 
         </>
       )
