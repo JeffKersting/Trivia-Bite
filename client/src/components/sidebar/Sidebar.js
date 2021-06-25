@@ -24,7 +24,9 @@ function Sidebar({ user }) {
       user.group_id = groupId
       getGroup()
     } else {
-      
+      const groupId = await axiosRequests.createGroup(user.id, groupInput)
+      user.group_id = groupId
+      getGroup()
     }
   }
 

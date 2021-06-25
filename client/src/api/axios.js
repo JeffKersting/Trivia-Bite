@@ -72,13 +72,14 @@ const fetchRequests = {
 
   createGroup: async (userId, groupName) => {
     const groupId = await axios.patch('http://localhost:8080/group', {
-
       params: {
         action: 'create',
         userId: userId,
         groupName: groupName
       }
     })
+    .then(data => data.data)
+    return(groupId)
   }
 
 }
