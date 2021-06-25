@@ -6,7 +6,6 @@ import GroupForm from './group-form/Group-Form'
 function Sidebar({ user }) {
   const [group, setGroup] = useState(null)
   const [groupName, setGroupName] = useState(null)
-  const [groupInput, setGroupInput] = useState('')
 
   const getGroup = async () => {
     if (user.group_id) {
@@ -16,9 +15,9 @@ function Sidebar({ user }) {
     }
   }
 
-  const joinGroup = async () => {
-
-  }
+  // const joinGroup = async () => {
+  //
+  // }
 
   const checkGroup = () => {
     if (group) {
@@ -32,8 +31,8 @@ function Sidebar({ user }) {
       return (
         <>
           <div>Looks like you aren't in a group! Join a group by group name below, or create one!</div>
-          <button onClick={joinGroup}>Join Group</button>
-          <button>Create Group</button>
+          <GroupForm />
+
         </>
       )
     }

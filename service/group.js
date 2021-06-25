@@ -21,14 +21,14 @@ class GroupService {
     return groupDAO.getGroupData(groupId)
   }
 
-  async joinGroup(joinDto) => {
+  async joinGroup(joinDto) {
     const {userId, groupName} = joinDto
     const groupId = await getGroupId(groupName)
     if (!groupId) {
       console.log('error')
       return
     }
-    return joinDAO.joinGroup(userId, groupId)
+    return groupDAO.joinGroup(userId, groupId)
   }
 }
 
