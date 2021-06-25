@@ -58,14 +58,15 @@ const fetchRequests = {
     .then(data => data.data)
   },
 
-  joinGroup: (userId, groupName) => {
-    console.log("AXIOS JOIN", userId, groupName)
-    return axios.patch('http://localhost:8080/group', {
+  joinGroup: async (userId, groupName) => {
+    const groupId = await axios.patch('http://localhost:8080/group', {
       params: {
         userId: userId,
         groupName: groupName
       }
     })
+    .then(data => data.data)
+    return(groupId)
   }
 
 }

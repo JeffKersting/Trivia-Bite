@@ -32,7 +32,7 @@ class GroupDAO {
         group_id: groupId
       })
       .returning('group_id')
-
+      return id
     } catch(err) {
       console.log(err)
     }
