@@ -15,8 +15,9 @@ function Sidebar({ user }) {
     }
   }
 
-  const formHandler = async (type, groupInput) => {
-    console.log("TARGET NAME", type)
+  const formHandler = async (e, groupInput) => {
+    e.preventDefault()
+    console.log("TARGET NAME", e.target.name)
     console.log('GROUP INPUT', groupInput)
   }
 

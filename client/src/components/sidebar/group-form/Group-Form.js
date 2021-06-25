@@ -8,11 +8,6 @@ function GroupForm({ formHandler }) {
     setInput(event.target.value)
   }
 
-  const submitHandler = (e) => {
-    e.preventDefault()
-    formHandler(e.target.name, groupInput)
-  }
-
   return (
     <form>
       <input
@@ -21,15 +16,14 @@ function GroupForm({ formHandler }) {
         value={groupInput}
         autoComplete='off'
         onChange={e => inputHandler(e)}
-
       />
       <button
         name='join'
-        onClick={e => submitHandler(e)}
+        onClick={e => formHandler(e, groupInput)}
       >Join Group</button>
       <button
         name='create'
-        onClick={e => submitHandler(e)}
+        onClick={e => formHandler(e, groupInput)}
       >Create Group</button>
     </form>
   )
