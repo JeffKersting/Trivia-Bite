@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import axiosRequests from '../../api/axios'
 import GroupMembers from './group-members/Group-Members'
+import GroupForm from './group-form/Group-Form'
 
 function Sidebar({ user }) {
   const [group, setGroup] = useState(null)
   const [groupName, setGroupName] = useState(null)
-  const [groupInput, setGroupInput] = useState('')
 
   const getGroup = async () => {
     if (user.group_id) {
@@ -15,8 +15,17 @@ function Sidebar({ user }) {
     }
   }
 
-  const joinGroup = async () => {
+  const formHandler = async (e, groupInput) => {
+    e.preventDefault()
+    const type = e.target.name
 
+    if (type === 'join') {
+      const groupId = await axiosRequests.joinGroup(user.id, groupInput)
+      user.group_id = groupId
+      getGroup()
+    } else {
+      
+    }
   }
 
   const checkGroup = () => {
@@ -31,8 +40,8 @@ function Sidebar({ user }) {
       return (
         <>
           <div>Looks like you aren't in a group! Join a group by group name below, or create one!</div>
-          <button onClick={joinGroup}>Join Group</button>
-          <button>Create Group</button>
+          <GroupForm formHandler={formHandler}/>
+
         </>
       )
     }

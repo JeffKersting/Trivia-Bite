@@ -1,7 +1,6 @@
 const express = require('express')
 const userController = require('../controller/user')
 const groupController = require('../controller/group')
-const joinController = require('../controller/join-group')
 const getQuestionsController = require('../controller/get-questions')
 
 
