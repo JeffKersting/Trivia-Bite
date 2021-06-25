@@ -7,12 +7,13 @@ const getQuestionsController = require('../controller/get-questions')
 
 const router = express.Router()
 router.post('/user', userController.createUser)
-router.post('/group', groupController.createGroup)
-router.post('/join', joinController.joinGroup)
-router.get('/questions', getQuestionsController.getQuestions)
-router.get('/group', groupController.getGroupData)
 router.get('/user', userController.getUserData)
 router.patch('/user', userController.updateUserScore)
+router.post('/group', groupController.createGroup)
+router.get('/group', groupController.getGroupData)
+router.patch('/group', groupController.joinGroup)
+router.post('/join', joinController.joinGroup)
+router.get('/questions', getQuestionsController.getQuestions)
 
 
 module.exports = router
