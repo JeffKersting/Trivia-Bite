@@ -39,6 +39,16 @@ const fetchRequests = {
     })
   },
 
+  updateUserScore: (userId, score) => {
+    return axios.patch('http://localhost:8080/user', {
+      params: {
+        userId: userId,
+        score: score
+      }
+    })
+    .then(data => data.data[0])
+  },
+
   getGroupData: (groupId) => {
     return axios.get('http://localhost:8080/group', {
       params: {
@@ -48,15 +58,14 @@ const fetchRequests = {
     .then(data => data.data)
   },
 
-  updateUserScore: (userId, score) => {
-    return axios.patch('http://localhost:8080/user', {
+  joinGroup: (groupName) => {
+    return axios.patch('http://localhost:8080/group', {
       params: {
-        userId: userId,
-        score: score
+        groupName: groupName
       }
     })
-    .then(data => data.data[0])
   }
+
 }
 
 export default fetchRequests
