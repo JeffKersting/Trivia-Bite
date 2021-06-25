@@ -2,16 +2,20 @@ const db = require('../db/db')
 
 class GroupDAO {
   async createGroup(userId, groupName) {
-    const [id] = await db('groups').insert({
-      group_name: groupName
-    })
-    .returning('id')
-
-    if(id) {
-      const [group] = await db('users').where({ id: userId}).update({
-         group_id: id
+    try {
+      const [id] = await db('groups').insert({
+        group_name: groupName
       })
-      .returning('group_id')
+      .returning('id')
+
+      if(id) {
+        const [group] = await db('users').where({ id: userId}).update({
+          group_id: id
+        }).returning('group_id')
+        return group
+      }
+    } catch(err) {
+      console.log(err)
     }
   }
 

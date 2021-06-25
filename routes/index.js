@@ -10,7 +10,7 @@ router.get('/user', userController.getUserData)
 router.patch('/user', userController.updateUserScore)
 router.post('/group', groupController.createGroup)
 router.get('/group', groupController.getGroupData)
-router.patch('/group', groupController.joinGroup)
+router.patch('/group', groupController.checkRoute)
 router.get('/questions', getQuestionsController.getQuestions)
 
 
