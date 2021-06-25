@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import axiosRequests from '../../api/axios'
 import GroupMembers from './group-members/Group-Members'
+import GroupForm from './group-form/Group-Form'
 
 function Sidebar({ user }) {
   const [group, setGroup] = useState(null)

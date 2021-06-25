@@ -3,6 +3,11 @@ import { useState } from 'react'
 function GroupForm() {
   const [groupInput, setInput] = useState('')
 
+  const inputHandler = () => {
+    event.preventDefault()
+    setInput(event.target.value)
+  }
+
   return (
     <form>
       <input
@@ -15,3 +20,5 @@ function GroupForm() {
     </form>
   )
 }
+
+export default GroupForm
