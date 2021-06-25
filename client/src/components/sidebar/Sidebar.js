@@ -5,6 +5,7 @@ import GroupMembers from './group-members/Group-Members'
 function Sidebar({ user }) {
   const [group, setGroup] = useState(null)
   const [groupName, setGroupName] = useState(null)
+  const [groupInput, setGroupInput] = useState('')
 
   const getGroup = async () => {
     if (user.group_id) {
@@ -12,6 +13,10 @@ function Sidebar({ user }) {
       setGroupName(groupData.groupName[0].group_name)
       setGroup(groupData.groupMembers.sort((a,b) => b.daily_score - a.daily_score))
     }
+  }
+
+  const joinGroup = async () => {
+
   }
 
   const checkGroup = () => {
@@ -26,7 +31,7 @@ function Sidebar({ user }) {
       return (
         <>
           <div>Looks like you aren't in a group! Join a group by group name below, or create one!</div>
-          <button>Join Group</button>
+          <button onClick={joinGroup}>Join Group</button>
           <button>Create Group</button>
         </>
       )

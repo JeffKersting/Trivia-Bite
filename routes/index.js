@@ -12,7 +12,6 @@ router.patch('/user', userController.updateUserScore)
 router.post('/group', groupController.createGroup)
 router.get('/group', groupController.getGroupData)
 router.patch('/group', groupController.joinGroup)
-router.post('/join', joinController.joinGroup)
 router.get('/questions', getQuestionsController.getQuestions)
 
 
