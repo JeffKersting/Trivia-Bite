@@ -22,7 +22,7 @@ class GroupController {
 
   async joinGroup(req, res) {
     try {
-      const id = await groupService.joinGroup(req.body)
+      const id = await groupService.joinGroup(req.body.params)
       res.status(201).json(id)
     } catch (err) {
       console.error(err)

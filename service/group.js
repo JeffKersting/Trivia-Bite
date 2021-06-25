@@ -1,4 +1,5 @@
 const groupDAO = require('../dao/group')
+const db = require('../db/db')
 
 const getGroupId = async (groupName) => {
   try {

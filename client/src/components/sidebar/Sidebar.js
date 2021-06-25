@@ -17,8 +17,13 @@ function Sidebar({ user }) {
 
   const formHandler = async (e, groupInput) => {
     e.preventDefault()
-    console.log("TARGET NAME", e.target.name)
-    console.log('GROUP INPUT', groupInput)
+    const type = e.target.name
+
+    if (type === 'join') {
+      const groupId = await axiosRequests.joinGroup(user.id, groupInput)
+    } else {
+      console.log("CREATING")
+    }
   }
 
   const checkGroup = () => {
