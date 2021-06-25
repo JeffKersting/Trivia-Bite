@@ -21,9 +21,10 @@ function Sidebar({ user }) {
 
     if (type === 'join') {
       const groupId = await axiosRequests.joinGroup(user.id, groupInput)
-      console.log("GROUP ID", groupId)
+      user.group_id = groupId
+      getGroup()
     } else {
-      console.log("CREATING")
+      
     }
   }
 
