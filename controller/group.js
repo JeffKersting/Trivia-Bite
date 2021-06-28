@@ -4,7 +4,7 @@ const groupService = require('../service/group')
 class GroupController {
   async createGroup(req, res) {
     try {
-      const id = await groupService.createGroup(req.body.params)
+      const id = await groupService.createGroup(req.body)
       res.status(201).json(id)
     } catch (err) {
       console.error(err)
@@ -15,6 +15,15 @@ class GroupController {
     try {
       const id = await groupService.joinGroup(req.body.params)
       res.status(201).json(id)
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  async leaveGroup(req, res) {
+    try {
+      const id = await groupService.leaveGroup(req.body.params)
+      res.status(201)
     } catch (err) {
       console.error(err)
     }
