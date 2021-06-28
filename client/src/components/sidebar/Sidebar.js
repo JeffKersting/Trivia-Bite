@@ -17,6 +17,7 @@ function Sidebar({ user }) {
 
   const leaveGroup = () => {
     axiosRequests.leaveGroup(user.id)
+    setGroup(null)
   }
 
   const formHandler = async (e, groupInput) => {
