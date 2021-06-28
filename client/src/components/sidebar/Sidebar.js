@@ -10,8 +10,12 @@ function Sidebar({ user }) {
   const getGroup = async () => {
     if (user.group_id) {
       const groupData = await axiosRequests.getGroupData(user.group_id)
-      setGroupName(groupData.groupName[0].group_name)
-      setGroup(groupData.groupMembers.sort((a,b) => b.daily_score - a.daily_score))
+      setGroupName(groupData.name)
+      if (groupData.members.length > 1) {
+        setGroup(groupData.members.sort((a,b) => b.daily_score - a.daily_score))
+      } else {
+        setGroup(groupData.members)
+      }
     }
   }
 
@@ -28,10 +32,10 @@ function Sidebar({ user }) {
       const groupId = await axiosRequests.joinGroup(user.id, groupInput)
       user.group_id = groupId
       getGroup()
-    } else {
+    } else if (type === 'create'){
       const groupId = await axiosRequests.createGroup(user.id, groupInput)
-      user.group_id = groupId
-      getGroup()
+      setGroup([user])
+      setGroupName(groupInput)
     }
   }
 
