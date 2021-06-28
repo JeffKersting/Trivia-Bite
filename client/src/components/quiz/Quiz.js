@@ -9,23 +9,27 @@ function Quiz({ questions, userScore, setRunning, setTime, setQuizScore, updateS
 
   const submitAnswer = (response) => {
     if (response) setScore(score = score + 100)
-    if (currentQuestion === 9) setCompleted(true)
+    if (currentQuestion === 9) {
+      setQuizScore(score)
+      setCompleted(true)
+    }
     setCurrentQuestion(currentQuestion = currentQuestion + 1)
   }
 
   const calculateScore = (time) => {
     setTime(time)
-    setRunning(false)
+    setCompleted(true)
   }
 
   useEffect(() => {
 
     return () => {
       if (!score) {
-        setQuizScore(1)
-        return
+        setQuizScore(10)
+      } else {
+        setQuizScore(score)
       }
-      setQuizScore(score)
+      setRunning(false)
     }
   }, [completed])
 
