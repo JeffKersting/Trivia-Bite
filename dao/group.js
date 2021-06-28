@@ -42,7 +42,7 @@ class GroupDAO {
     }
   }
 
-  leaveGroup(userId, groupName) {
+  leaveGroup(userId) {
     try {
       db('users').where({ id: userId }).update({
         group_id: NULL

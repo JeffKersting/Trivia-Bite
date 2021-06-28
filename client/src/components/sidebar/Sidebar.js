@@ -15,6 +15,10 @@ function Sidebar({ user }) {
     }
   }
 
+  const leaveGroup = () => {
+    axiosRequests.leaveGroup(user.id)
+  }
+
   const formHandler = async (e, groupInput) => {
     e.preventDefault()
     const type = e.target.name
@@ -35,6 +39,7 @@ function Sidebar({ user }) {
       return (
         <>
           <div className='group-name'>{groupName}</div>
+          <button onClick={leaveGroup}>Leave Group</button>
           {group.map((member, index) => <GroupMembers member={member} key={index}/>)}
         </>
       )

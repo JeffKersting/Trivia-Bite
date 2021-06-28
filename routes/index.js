@@ -8,10 +8,10 @@ const router = express.Router()
 router.post('/user', userController.createUser)
 router.get('/user', userController.getUserData)
 router.patch('/user', userController.updateUserScore)
+router.patch('/user', userController.checkRoute)
 router.post('/group', groupController.createGroup)
 router.get('/group', groupController.getGroupData)
-router.post('/group', groupController.createGroup)
-router.patch('/group', groupController.checkRoute)
+router.patch('/group', groupController.joinGroup)
 router.get('/questions', getQuestionsController.getQuestions)
 
 

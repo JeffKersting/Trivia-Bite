@@ -31,6 +31,11 @@ class GroupService {
     }
     return groupDAO.joinGroup(userId, groupId)
   }
+
+  leaveGroup(leaveDto) {
+    const { userId } = leaveDto
+    return groupDAO.leaveGroup(userId)
+  }
 }
 
 module.exports = new GroupService()

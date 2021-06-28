@@ -81,12 +81,11 @@ const fetchRequests = {
     return(groupId)
   },
 
-  leaveGroup: async (userId, groupName) => {
-    const groupId = await axios.patch('http://localhost:8080/group', {
+  leaveGroup: async (userId) => {
+    const groupId = await axios.patch('http://localhost:8080/user', {
       params: {
         action: 'leave',
-        userId: userId,
-        groupName: groupName
+        userId: userId
       }
     })
     .then(data => data.data)
