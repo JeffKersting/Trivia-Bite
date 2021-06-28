@@ -11,7 +11,7 @@ exports.up = function(knex) {
       table.string('name').notNullable().unique()
       table.string('email').notNullable().unique()
       table.integer('daily_score')
-      table.integer('group_id').unsigned()
+      table.integer('group_id').unsigned().nullable()
       table.foreign('group_id').references('groups.id')
       table.timestamps(true, true)
     })
