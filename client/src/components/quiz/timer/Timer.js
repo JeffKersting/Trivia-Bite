@@ -8,7 +8,7 @@ function Timer({ calculateScore }) {
     time -= 1
     setTimer(time)
     if (time === 0) {
-      calculateScore(0)
+      calculateScore(1)
     } else {
       setTimeout(() => updateTimer(), 1000)
     }
