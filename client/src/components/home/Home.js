@@ -41,7 +41,7 @@ function Home({ user, setUser }) {
     if (e && quizRunning) {
       const updatedUserData = axiosRequests.updateUserScore(user.id, 10)
     }
-    return 
+    return
   }
 
   useEffect(() => {
@@ -52,7 +52,7 @@ function Home({ user, setUser }) {
     if (quizScore || quizTime) {
       updateScore()
     }
-  }, [quizRunning])
+  }, [quizScore])
 
   return (
 
