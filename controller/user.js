@@ -27,14 +27,6 @@ class UserController {
       console.error(err)
     }
   }
-
-  checkRoute = (req, res) => {
-    if (req.body.params.action === 'join') {
-      this.joinGroup(req, res)
-    } else {
-      this.createGroup(req, res)
-    }
-  }
 }
 
 module.exports = new UserController()

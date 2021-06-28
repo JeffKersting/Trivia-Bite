@@ -42,13 +42,14 @@ class GroupDAO {
     }
   }
 
-  leaveGroup(userId) {
+  async leaveGroup(userId) {
+    console.log("USER ID", userId)
     try {
-      db('users').where({ id: userId }).update({
-        group_id: NULL
+      const [id] = await db('users').where({ id: userId }).update({
+        group_id: null
       })
     } catch(err) {
-      console.log(err)
+      console.log("ERROR MESSAGE****", err)
     }
   }
 }

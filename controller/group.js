@@ -11,6 +11,15 @@ class GroupController {
     }
   }
 
+  async getGroupData(req, res) {
+    try {
+      const groupData = await groupService.getGroupData(req.query)
+      res.status(201).json(groupData)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   async joinGroup(req, res) {
     try {
       const id = await groupService.joinGroup(req.body.params)
@@ -29,12 +38,11 @@ class GroupController {
     }
   }
 
-  async getGroupData(req, res) {
-    try {
-      const groupData = await groupService.getGroupData(req.query)
-      res.status(201).json(groupData)
-    } catch (err) {
-      console.log(err)
+  checkRoute = (req, res) => {
+    if (req.body.params.action === 'join') {
+      this.joinGroup(req, res)
+    } else if (req.body.params.action === 'leave'){
+      this.leaveGroup(req, res)
     }
   }
 }
