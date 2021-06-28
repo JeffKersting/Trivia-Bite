@@ -19,7 +19,14 @@ function Quiz({ questions, userScore, setRunning, setTime, setQuizScore, updateS
   }
 
   useEffect(() => {
+
+    return () => {
+      if (!score) {
+        setQuizScore(1)
+        return
+      }
       setQuizScore(score)
+    }
   }, [completed])
 
   return (
