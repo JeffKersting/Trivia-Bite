@@ -41,6 +41,16 @@ class GroupDAO {
       console.log(err)
     }
   }
+
+  leaveGroup(userId, groupName) {
+    try {
+      db('users').where({ id: userId }).update({
+        group_id: NULL
+      })
+    } catch(err) {
+      console.log(err)
+    }
+  }
 }
 
 module.exports = new GroupDAO()
