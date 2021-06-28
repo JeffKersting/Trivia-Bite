@@ -55,7 +55,22 @@ const fetchRequests = {
         groupId: groupId
       }
     })
-    .then(data => data.data)
+    .then(data => {
+      const groupMembers = data.data.groupMembers
+      const groupName = data.data.groupName[0].group_name
+      return {members: groupMembers, name: groupName}
+    })
+  },
+
+  createGroup: async (userId, groupName) => {
+    return axios({
+      method: 'POST',
+      url: 'http://localhost:8080/group',
+      data: {
+        userId: userId,
+        groupName: groupName
+      }
+    })
   },
 
   joinGroup: async (userId, groupName) => {
@@ -70,18 +85,14 @@ const fetchRequests = {
     return(groupId)
   },
 
-  createGroup: async (userId, groupName) => {
+  leaveGroup: async (userId) => {
     const groupId = await axios.patch('http://localhost:8080/group', {
       params: {
-        action: 'create',
-        userId: userId,
-        groupName: groupName
+        action: 'leave',
+        userId: userId
       }
     })
-    .then(data => data.data)
-    return(groupId)
   }
-
 }
 
 export default fetchRequests

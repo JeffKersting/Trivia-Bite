@@ -41,6 +41,17 @@ class GroupDAO {
       console.log(err)
     }
   }
+
+  async leaveGroup(userId) {
+    try {
+      const [id] = await db('users').where({ id: userId }).update({
+        group_id: null
+      })
+    } catch(err) {
+      if (err.name === 'TypeError') return
+      console.log(err)
+    }
+  }
 }
 
 module.exports = new GroupDAO()
