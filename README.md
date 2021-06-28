@@ -8,7 +8,6 @@ A Trivia App
 #### Compete with friends in daily trivia quizzes.
 - **API** built with Node, Express, postgreSQL, Knex and Google Login.
 - **WebApp** built with React 
-- Written in ES6+ using Babel + Webpack
 
 
 ## Features
