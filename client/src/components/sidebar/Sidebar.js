@@ -43,8 +43,10 @@ function Sidebar({ user }) {
     if (group) {
       return (
         <>
-          <div className='group-name'>{groupName}</div>
-          <button onClick={leaveGroup}>Leave Group</button>
+          <div className='group-header'>
+            <div className='group-name'>{groupName}</div>
+            <button className='leave-group' onClick={leaveGroup}>Leave</button>
+          </div>
           {group.map((member, index) => <GroupMembers member={member} key={index}/>)}
         </>
       )

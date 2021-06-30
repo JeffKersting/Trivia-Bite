@@ -4,3 +4,11 @@ $button-color: blue;
   margin-left: 50%;
   transform: translateX(-50%)
 }
+
+@mixin boxShadow() {
+  box-shadow: 0px 0px 8px white inset;
+}
+
+@mixin boxShadowHover() {
+  box-shadow: 0px 0px 8px black inset;
+}
