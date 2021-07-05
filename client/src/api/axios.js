@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const api = process.env.PORT || 'http://localhost:8080/'
+const api = process.env.REACT_APP_DB_URL || 'http://localhost:8080/'
 
 const fetchRequests = {
 
