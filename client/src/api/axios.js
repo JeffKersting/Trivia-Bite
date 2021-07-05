@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const api = process.env.REACT_APP_DB_URL || 'http://localhost:8080/'
+const api = process.env.REACT_APP_DB_URL || 'http://localhost:8080'
 
 const fetchRequests = {
 
@@ -14,7 +14,7 @@ const fetchRequests = {
 
   getQuestions: async () => {
     const questions = []
-    const questionsData = await axios.get(api + 'questions')
+    const questionsData = await axios.get(api + '/questions')
     questionsData.data.forEach(question => {
       questions.push(question)
     })
@@ -22,7 +22,7 @@ const fetchRequests = {
   },
 
   getUserData: (userEmail) => {
-    return axios.get(api + 'user', {
+    return axios.get(api + '/user', {
       params: {
         userEmail: userEmail
       }
@@ -33,7 +33,7 @@ const fetchRequests = {
   postUserData: (userName, userEmail) => {
     return axios({
       method: 'POST',
-      url: api + 'user',
+      url: api + '/user',
       data: {
         name: userName,
         email: userEmail
@@ -42,7 +42,7 @@ const fetchRequests = {
   },
 
   updateUserScore: (userId, score) => {
-    return axios.patch(api + 'user', {
+    return axios.patch(api + '/user', {
       params: {
         userId: userId,
         score: score
@@ -52,7 +52,7 @@ const fetchRequests = {
   },
 
   getGroupData: (groupId) => {
-    return axios.get(api + 'group', {
+    return axios.get(api + '/group', {
       params: {
         groupId: groupId
       }
@@ -67,7 +67,7 @@ const fetchRequests = {
   createGroup: async (userId, groupName) => {
     return axios({
       method: 'POST',
-      url: api + 'group',
+      url: api + '/group',
       data: {
         userId: userId,
         groupName: groupName
@@ -76,7 +76,7 @@ const fetchRequests = {
   },
 
   joinGroup: async (userId, groupName) => {
-    const groupId = await axios.patch(api + 'group', {
+    const groupId = await axios.patch(api + '/group', {
       params: {
         action: 'join',
         userId: userId,
@@ -88,7 +88,7 @@ const fetchRequests = {
   },
 
   leaveGroup: async (userId) => {
-    const groupId = await axios.patch(api + 'group', {
+    const groupId = await axios.patch(api + '/group', {
       params: {
         action: 'leave',
         userId: userId
