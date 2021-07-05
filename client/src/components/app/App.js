@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       {!user && <Redirect to='/login' />}
       {user && <Redirect to='/home' />}
-      <Switch>
+
         <Route
           path='/login'
           render={() => {
@@ -31,7 +31,7 @@ function App() {
             )}
           }
         />
-      </Switch>
+      
     </div>
   );
 }

@@ -51,7 +51,7 @@ function Sidebar({ user }) {
     } else {
       return (
         <>
-          <div>Looks like you aren't in a group! Join a group by group name below, or create one!</div>
+          <div>Looks like you aren't in a group! Join a group by group name below, or create one.</div>
           <GroupForm formHandler={formHandler}/>
 
         </>
