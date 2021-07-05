@@ -5,6 +5,20 @@ const cors = require('cors')
 const getQuestions = require('./cron-jobs/questions')
 const resetDailyScore = require('./cron-jobs/reset-scores')
 const port = process.env.PORT || 8080
+const whitelist = ['http://localhost:3000', 'http://localhost:8080', /*ADD HEROKU URL*/]
+
+const corsOptions = {
+  origin: (origin, callback) => {
+    console.log('** Origin of request' + origin)
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      console.log('Origin acceptable')
+      callback(null, true)
+    } else {
+      console.log('Origin rejected')
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
 
 const app = express()
 app.use(cors())
