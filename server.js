@@ -4,6 +4,7 @@ const cron = require('node-cron')
 const router = require('./routes')
 const cors = require('cors')
 const helmet = require('helmet')
+const path = require('path')
 const getQuestions = require('./cron-jobs/questions')
 const resetDailyScore = require('./cron-jobs/reset-scores')
 const port = process.env.PORT || 8080
@@ -33,7 +34,7 @@ app.use(bodyParser.json())
 app.use(router)
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'))
+  app.use(express.static(path.join(__dirname, 'client/build')))
 }
 
 cron.schedule('0 1 * * * ', () => {

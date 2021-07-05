@@ -3,19 +3,17 @@ import { useState } from 'react'
 import Login from '../login/Login'
 import Home from '../home/Home'
 
-const api = process.env.PORT || 'http://localhost:8080'
-
 function App() {
   const [user, setUser] = useState(null)
-  console.log('ENVIRONMENT', process.env.PORT)
+
 
   return (
     <div className="App">
-      {!user && <Redirect to={`${api}/login`} />}
-      {user && <Redirect to={`${api}/home`} />}
+      {!user && <Redirect to='/login' />}
+      {user && <Redirect to='/home' />}
       <Switch>
         <Route
-          path={`${api}/login`}
+          path='/login'
           render={() => {
             return (
               <Login setUser={setUser}/>
@@ -23,11 +21,11 @@ function App() {
           }
         />
         <Route
-          path={`${api}/home`}
+          path='/home'
           render={() => {
             return (
               <>
-                {!user && <Redirect to={`${api}/login`} />}
+                {!user && <Redirect to='/login' />}
                 {user && <Home user={user} setUser={setUser}/>}
               </>
             )}
