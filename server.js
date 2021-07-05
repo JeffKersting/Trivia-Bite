@@ -10,19 +10,23 @@ const resetDailyScore = require('./cron-jobs/reset-scores')
 const port = process.env.PORT || 8080
 
 const app = express()
-app.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
-  next()
-})
+// app.use(function(req, res, next) {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH');
+//   res.header('Access-Control-Allow-Headers', 'Content-Type');
+//   next()
+// })
 
 app.use(helmet({
   contentSecurityPolicy: false
 }))
-app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cors({
+  origin: '*',
+  credentials: false,
+  methods: ['GET', 'POST', 'DELETE', 'PATCH']
+ }))
 app.use('/', router)
 app.use('/home', router)
 app.use('/login', router)
