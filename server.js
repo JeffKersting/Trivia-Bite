@@ -1,4 +1,5 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const cron = require('node-cron')
 const router = require('./routes')
 const cors = require('cors')
@@ -27,8 +28,8 @@ app.use(helmet({
   contentSecurityPolicy: false
 }))
 app.use(cors())
-app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 app.use(router)
 
 if (process.env.NODE_ENV === 'production') {
