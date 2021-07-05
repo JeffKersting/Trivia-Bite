@@ -4,7 +4,6 @@ import axios from 'axios'
 
 function Login({ setUser, user }) {
   const responseGoogle = async (response) => {
-    console.log("RESPONSE OBJECT", response)
     const email = await response.profileObj.email
     const userData = await axiosRequests.getUserData(email)
     if (userData) {

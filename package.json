@@ -8,8 +8,8 @@
     "npm": "6.14.9"
   },
   "scripts": {
-    "heroku-postbuild": "cd client && npm install && npm run build",
     "migrate": "npx knex migrate:latest --knexfile db/knexfile.js",
+    "heroku-postbuild": "npm run migrate && cd client && npm install && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "server": "nodemon server.js",
