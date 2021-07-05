@@ -1,4 +1,5 @@
 const express = require('express')
+const path = require('path')
 const cron = require('node-cron')
 const router = require('./routes')
 const cors = require('cors')
@@ -6,6 +7,7 @@ const getQuestions = require('./cron-jobs/questions')
 const resetDailyScore = require('./cron-jobs/reset-scores')
 const port = process.env.PORT || 8080
 const whitelist = ['http://localhost:3000', 'http://localhost:8080', /*ADD HEROKU URL*/]
+const app = express()
 
 const corsOptions = {
   origin: (origin, callback) => {
@@ -20,7 +22,6 @@ const corsOptions = {
   }
 }
 
-const app = express()
 app.use(cors())
 app.use(express.json())
 app.use(router)
