@@ -40,8 +40,8 @@ function Home({ user, setUser }) {
     const e = event || window.event
     if (e && quizRunning) {
       const updatedUserData = axiosRequests.updateUserScore(user.id, 10)
+      return
     }
-    return
   }
 
   useEffect(() => {
