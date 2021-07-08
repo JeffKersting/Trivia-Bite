@@ -31,3 +31,22 @@
     margin-left: 2em;
   }
 }
+
+.group-form {
+  width: 10em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  padding-top: 2em;
+
+  input {
+    width: 11em;
+  }
+
+  button,
+  input {
+    margin-top: 1em;
+  }
+}
