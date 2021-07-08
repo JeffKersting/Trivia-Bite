@@ -53,7 +53,7 @@ function Sidebar({ user }) {
     } else {
       return (
         <>
-          
+
           <GroupForm formHandler={formHandler}/>
         </>
       )
@@ -61,9 +61,13 @@ function Sidebar({ user }) {
   }
 
 
+  // useEffect(() => {
+  //   getGroup()
+  // }, [])
+
   useEffect(() => {
     getGroup()
-  }, [])
+  }, [user])
 
   return (
     <div className='sidebar'>

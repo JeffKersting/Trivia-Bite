@@ -6,6 +6,8 @@ import Sidebar from '../sidebar/Sidebar'
 function Home({ user, setUser, setLoading }) {
   const [questions, setQuestions] = useState('')
   const [quizRunning, setRunning] = useState(false)
+  const [quizScore, setQuizScore] = useState(null)
+  const [quizTime, setTime] = useState(null)
 
   const getData = async () => {
     const questions = await axiosRequests.getQuestions()
@@ -27,6 +29,7 @@ function Home({ user, setUser, setLoading }) {
   const updateScore = async () => {
     const updatedUserData = await axiosRequests.updateUserScore(user.id, user.daily_score)
     setUser(updatedUserData)
+    setLoading(true)
   }
 
   window.onbeforeunload = (event) => {
@@ -48,7 +51,6 @@ function Home({ user, setUser, setLoading }) {
   }, [quizRunning])
 
   return (
-
     <div className='home'>
       <Sidebar user={user} />
       {!quizRunning && checkUserDaily()}
@@ -57,6 +59,9 @@ function Home({ user, setUser, setLoading }) {
         questions={questions}
         user={user}
         setRunning={setRunning}
+        setQuizScore={setQuizScore}
+        setTime={setTime}
+        updateScore={updateScore}
         />
       }
     </div>
