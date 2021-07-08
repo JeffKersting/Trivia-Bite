@@ -8,12 +8,12 @@
 }
 
 .startQuizBtn {
-  @include centerHorizontally()
+  @include centerQuizArea();
   margin-top: 10em;
 }
 
 .quiz-status {
-  @include centerHorizontally()
+  @include centerQuizArea()
   width: 75%;
   text-align: center;
   margin-top: 20%;
