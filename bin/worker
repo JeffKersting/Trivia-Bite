@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+
+function updateDatabase() {
+  console.log('heroku scheduler test')
+}
+
+updateDatabase()
