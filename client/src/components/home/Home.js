@@ -27,9 +27,9 @@ function Home({ user, setUser, setLoading }) {
   }
 
   const updateScore = async () => {
-    const totalScore = quizScore + quizTime * 10
-    const updatedUserData = await axiosRequests.updateUserScore(user.id, totalScore)
+    const updatedUserData = await axiosRequests.updateUserScore(user.id, user.daily_score)
     setUser(updatedUserData)
+    setLoading(true)
   }
 
   window.onbeforeunload = (event) => {
@@ -41,7 +41,6 @@ function Home({ user, setUser, setLoading }) {
   }
 
   useEffect(() => {
-    setLoading(true)
     getData()
   }, [])
 
@@ -49,17 +48,16 @@ function Home({ user, setUser, setLoading }) {
     if (quizScore || quizTime) {
       updateScore()
     }
-  }, [quizScore])
+  }, [quizRunning])
 
   return (
-
     <div className='home'>
       <Sidebar user={user} />
       {!quizRunning && checkUserDaily()}
       {quizRunning &&
         <Quiz
         questions={questions}
-        userScore={user.daily_score}
+        user={user}
         setRunning={setRunning}
         setQuizScore={setQuizScore}
         setTime={setTime}
