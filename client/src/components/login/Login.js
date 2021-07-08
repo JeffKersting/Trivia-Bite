@@ -2,12 +2,13 @@ import { GoogleLogin } from 'react-google-login'
 import axiosRequests from '../../api/axios'
 import axios from 'axios'
 
-function Login({ setUser, user }) {
+function Login({ setUser, user, setLoading }) {
   const responseGoogle = async (response) => {
     const email = await response.profileObj.email
     const userData = await axiosRequests.getUserData(email)
     if (userData) {
       setUser(userData)
+      setLoading(false)
     } else {
       axiosRequests.postUserData(response.profileObj.name, response.profileObj.email)
     }

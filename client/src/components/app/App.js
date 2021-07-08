@@ -1,5 +1,5 @@
 import { Switch, Route, Redirect } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Login from '../login/Login'
 import Home from '../home/Home'
 import Loading from '../loading/Loading'
@@ -8,37 +8,44 @@ function App() {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
 
-  const checkUser = () => {
-    user ? <Redirect to='/home' /> : <Redirect to='/login' />
-  }
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 2000)
+  }, [])
 
 
   return (
-    <div className="App">
-
-        {loading && <Loading setLoading={setLoading}/>}
-
+    <>
+      {loading && <Loading setLoading={setLoading}/>}
+      {!loading &&
+        <div className="App">
+        {!user && <Redirect to='/login' />}
+        {user && <Redirect to='/home' />}
         <Route
-          path='/login'
-          render={() => {
-            return (
-              <Login setUser={setUser}/>
-            )}
-          }
+        path='/login'
+        render={() => {
+          return (
+            <Login
+            setUser={setUser}
+            setLoading={setLoading}
+            />
+          )}
+        }
         />
         <Route
-          path='/home'
-          render={() => {
-            return (
-              <>
-                {!user && <Redirect to='/login' />}
-                {user && <Home user={user} setUser={setUser}/>}
-              </>
-            )}
-          }
+        path='/home'
+        render={() => {
+          return (
+            <>
+            {!user && <Redirect to='/login' />}
+            {user && <Home user={user} setUser={setUser} setLoading={setLoading}/>}
+            </>
+          )}
+        }
         />
-
-    </div>
+        </div>
+      }
+    </>
   );
 }
 
