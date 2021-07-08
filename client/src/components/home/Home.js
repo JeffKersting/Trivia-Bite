@@ -43,7 +43,6 @@ function Home({ user, setUser, setLoading }) {
   useEffect(() => {
     setLoading(true)
     getData()
-    console.log('ENVIRONMENTAL DB URL', process.env.REACT_APP_DB_URL)
   }, [])
 
   useEffect(() => {
