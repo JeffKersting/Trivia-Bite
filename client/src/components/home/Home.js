@@ -6,8 +6,6 @@ import Sidebar from '../sidebar/Sidebar'
 function Home({ user, setUser, setLoading }) {
   const [questions, setQuestions] = useState('')
   const [quizRunning, setRunning] = useState(false)
-  const [quizScore, setQuizScore] = useState(null)
-  const [quizTime, setTime] = useState(null)
 
   const getData = async () => {
     const questions = await axiosRequests.getQuestions()
@@ -27,8 +25,7 @@ function Home({ user, setUser, setLoading }) {
   }
 
   const updateScore = async () => {
-    const totalScore = quizScore + quizTime * 10
-    const updatedUserData = await axiosRequests.updateUserScore(user.id, totalScore)
+    const updatedUserData = await axiosRequests.updateUserScore(user.id, user.daily_score)
     setUser(updatedUserData)
   }
 
@@ -41,7 +38,6 @@ function Home({ user, setUser, setLoading }) {
   }
 
   useEffect(() => {
-    setLoading(true)
     getData()
   }, [])
 
@@ -49,7 +45,7 @@ function Home({ user, setUser, setLoading }) {
     if (quizScore || quizTime) {
       updateScore()
     }
-  }, [quizScore])
+  }, [quizRunning])
 
   return (
 
@@ -59,11 +55,8 @@ function Home({ user, setUser, setLoading }) {
       {quizRunning &&
         <Quiz
         questions={questions}
-        userScore={user.daily_score}
+        user={user}
         setRunning={setRunning}
-        setQuizScore={setQuizScore}
-        setTime={setTime}
-        updateScore={updateScore}
         />
       }
     </div>
