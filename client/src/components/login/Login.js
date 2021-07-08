@@ -4,11 +4,11 @@ import axios from 'axios'
 
 function Login({ setUser, user, setLoading }) {
   const responseGoogle = async (response) => {
+    setLoading(true)
     const email = await response.profileObj.email
     const userData = await axiosRequests.getUserData(email)
     if (userData) {
       setUser(userData)
-      setLoading(false)
     } else {
       axiosRequests.postUserData(response.profileObj.name, response.profileObj.email)
     }

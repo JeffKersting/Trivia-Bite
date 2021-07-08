@@ -3,17 +3,15 @@ import axiosRequests from '../../api/axios'
 import Quiz from '../quiz/Quiz'
 import Sidebar from '../sidebar/Sidebar'
 
-function Home({ user, setUser }) {
+function Home({ user, setUser, setLoading }) {
   const [questions, setQuestions] = useState('')
   const [quizRunning, setRunning] = useState(false)
   const [quizScore, setQuizScore] = useState(null)
   const [quizTime, setTime] = useState(null)
-  const [loading, setLoading] = useState(true)
 
   const getData = async () => {
     const questions = await axiosRequests.getQuestions()
     setQuestions(questions)
-    setLoading(false)
   }
 
   const beginQuiz = () => {
@@ -29,11 +27,9 @@ function Home({ user, setUser }) {
   }
 
   const updateScore = async () => {
-    setLoading(true)
     const totalScore = quizScore + quizTime * 10
     const updatedUserData = await axiosRequests.updateUserScore(user.id, totalScore)
     setUser(updatedUserData)
-    setLoading(false)
   }
 
   window.onbeforeunload = (event) => {
@@ -45,6 +41,7 @@ function Home({ user, setUser }) {
   }
 
   useEffect(() => {
+    setLoading(true)
     getData()
     console.log('ENVIRONMENTAL DB URL', process.env.REACT_APP_DB_URL)
   }, [])
@@ -58,23 +55,18 @@ function Home({ user, setUser }) {
   return (
 
     <div className='home'>
-      { !loading &&
-        <>
-          <Sidebar user={user} />
-          {!quizRunning && checkUserDaily()}
-          {quizRunning &&
-            <Quiz
-            questions={questions}
-            userScore={user.daily_score}
-            setRunning={setRunning}
-            setQuizScore={setQuizScore}
-            setTime={setTime}
-            updateScore={updateScore}
-            />
-          }
-        </>
+      <Sidebar user={user} />
+      {!quizRunning && checkUserDaily()}
+      {quizRunning &&
+        <Quiz
+        questions={questions}
+        userScore={user.daily_score}
+        setRunning={setRunning}
+        setQuizScore={setQuizScore}
+        setTime={setTime}
+        updateScore={updateScore}
+        />
       }
-      { loading && <div>Loading...</div>}
     </div>
   )
 }
