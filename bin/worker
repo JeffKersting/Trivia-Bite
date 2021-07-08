@@ -1,9 +1,13 @@
 #!/usr/bin/env node
 
-const schedulerTest = require('../cron-jobs/test')
+const getQuestions = require('../cron-jobs/questions')
+const resetDailyScore = require('../cron-jobs/reset-scores')
+
 
 function updateDatabase() {
-  schedulerTest()
+  console.log('Running scheduled task...')
+  getQuestions()
+  resetDailyScore()
 }
 
 updateDatabase()
