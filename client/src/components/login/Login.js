@@ -14,8 +14,9 @@ function Login({ setUser, user }) {
   }
 
   return (
-    <>
+    <div className="login-page">
       <GoogleLogin
+        className="google-login"
         clientId="764899056810-2d6oki589hnrp6ir2i1pd1f3o41tg732.apps.googleusercontent.com"
         buttonText="Login with Google"
         onSuccess={responseGoogle}
@@ -23,7 +24,7 @@ function Login({ setUser, user }) {
         cookiePolicy={'single_host_origin'}
         isSignedIn={true}
       />
-    </>
+    </div>
   )
 }
 
