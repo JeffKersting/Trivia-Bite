@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 
+const schedulerTest = require('../cron-jobs/test')
+
 function updateDatabase() {
-  console.log('heroku scheduler test')
+  schedulerTest()
 }
 
 updateDatabase()
