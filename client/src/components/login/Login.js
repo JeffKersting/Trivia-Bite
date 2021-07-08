@@ -15,6 +15,10 @@ function Login({ setUser, user }) {
 
   return (
     <div className="login-page">
+      <div className='site-name'>
+        <p className='trivia'>Trivia</p>
+        <p className='bite'>Bite</p>
+      </div>
       <GoogleLogin
         className="google-login"
         clientId="764899056810-2d6oki589hnrp6ir2i1pd1f3o41tg732.apps.googleusercontent.com"

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@700&display=swap');
 
 $button-color: blue;
 $light-blue: #A8D0E6;
@@ -14,6 +15,10 @@ $gold:#F8E9A1;
 
 @mixin mainFont() {
   font-family: 'Abel', sans-serif;
+}
+
+@mixin titleFont() {
+  font-family: 'Teko', sans-serif;
 }
 
 @mixin boxShadow() {

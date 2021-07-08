@@ -3,10 +3,29 @@
   height: 100vh;
 }
 
+p {
+  margin: 0;
+}
+
+.site-name {
+  display: flex;
+  font-size: 5.5em;
+}
+
+.trivia {
+  margin: 0 .15em 0 .1em;
+  color: $light-blue;
+}
+
+.bite {
+  @include titleFont()
+  color: $dark-blue;
+}
+
 .google-login {
   width: 15em;
   display: flex;
   justify-content: center;
-  @include centerHorizontally()
-  margin-top: 40%;
+  margin-top: 15em;
+  margin-left: 50%;
 }
