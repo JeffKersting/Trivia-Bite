@@ -2,15 +2,21 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import { useState } from 'react'
 import Login from '../login/Login'
 import Home from '../home/Home'
+import Loading from '../loading/Loading'
 
 function App() {
   const [user, setUser] = useState(null)
+  const [loading, setLoading] = useState(true)
+
+  const checkUser = () => {
+    user ? <Redirect to='/home' /> : <Redirect to='/login' />
+  }
 
 
   return (
     <div className="App">
-      {!user && <Redirect to='/login' />}
-      {user && <Redirect to='/home' />}
+
+        {loading && <Loading setLoading={setLoading}/>}
 
         <Route
           path='/login'
@@ -31,7 +37,7 @@ function App() {
             )}
           }
         />
-      
+
     </div>
   );
 }
