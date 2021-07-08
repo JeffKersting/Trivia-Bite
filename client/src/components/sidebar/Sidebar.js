@@ -43,17 +43,18 @@ function Sidebar({ user }) {
     if (group) {
       return (
         <>
-          <div className='group-name'>{groupName}</div>
-          <button onClick={leaveGroup}>Leave Group</button>
+          <div className='group-header'>
+            <div className='group-name'>{groupName}</div>
+            <button className='leave-group' onClick={leaveGroup}>Leave</button>
+          </div>
           {group.map((member, index) => <GroupMembers member={member} key={index}/>)}
         </>
       )
     } else {
       return (
         <>
-          <div>Looks like you aren't in a group! Join a group by group name below, or create one.</div>
+          
           <GroupForm formHandler={formHandler}/>
-
         </>
       )
     }
@@ -66,7 +67,6 @@ function Sidebar({ user }) {
 
   return (
     <div className='sidebar'>
-      <div className='user'>{user.name}</div>
       <div className='group'>
         {checkGroup()}
       </div>
