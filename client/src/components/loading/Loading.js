@@ -7,7 +7,8 @@ function Loading() {
       <p className='bite'>Bite</p>
       <div className='login-icon'/>
     </div>
-      <div className='loading'/>
+    <div className='loading-gradient' />
+    <div className='loading'>&#128161;</div>
     </>
   )
 }
