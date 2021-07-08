@@ -19,7 +19,6 @@ function Login({ setUser, user }) {
         <p className='trivia'>Trivia</p>
         <p className='bite'>Bite</p>
         <div className='login-icon'/>
-        
       </div>
       <div className='login-section'>
         <p className='site-about'>
