@@ -24,10 +24,11 @@ p {
 
 .login-icon {
   background: url('../../assets/fork.png');
-  width: .9em;
-  height: .9em;
-  margin-top: .15em;
+  width: .8em;
+  height: .8em;
+  margin-top: .25em;
   background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .site-about {
@@ -38,6 +39,7 @@ p {
 
 .google-login {
   width: 15em;
+  height: 3em;
   display: flex;
   justify-content: center;
   margin-top: 10em;
