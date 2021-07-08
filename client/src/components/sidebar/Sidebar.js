@@ -60,11 +60,6 @@ function Sidebar({ user }) {
     }
   }
 
-
-  // useEffect(() => {
-  //   getGroup()
-  // }, [])
-
   useEffect(() => {
     getGroup()
   }, [user])
