@@ -1,12 +1,15 @@
 .home {
   display: grid;
+  height: 100vh;
+  position: relative;
   grid-template-columns: .25fr 1fr;
   grid-column-gap: 2vw;
+  background-color: $light-blue;
 }
 
 .startQuizBtn {
   @include centerHorizontally()
-  margin-top: 40%;
+  margin-top: 10em;
 }
 
 .quiz-status {

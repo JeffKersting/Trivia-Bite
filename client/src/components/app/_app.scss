@@ -1,9 +1,15 @@
 button {
   width: 100px;
   height: 5vh;
-  border: none;
+  border: 1px solid $light-blue;
+  background-color: $dark-blue;
+  color: white;
   @include boxShadow()
   &:hover {
     @include boxShadowHover()
   }
+}
+
+body {
+  margin: 0;
 }

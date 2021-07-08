@@ -1,11 +1,14 @@
 .sidebar {
-  height: 70vh;
-  width: 20vw;
-  border: 1px solid black;
-  border-radius: 5px;
-  padding: 10px;
+  height: 100%;
+  width: 12em;
+  background-color: $dark-blue;
+  color: white;
   display: grid;
   grid-template-rows: .15fr 1fr;
+
+  .group {
+    padding: 1em;
+  }
 
   .group-header {
     display: flex;

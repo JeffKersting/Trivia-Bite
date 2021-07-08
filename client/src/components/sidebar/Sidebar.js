@@ -68,7 +68,6 @@ function Sidebar({ user }) {
 
   return (
     <div className='sidebar'>
-      <div className='user'>{user.name}</div>
       <div className='group'>
         {checkGroup()}
       </div>
