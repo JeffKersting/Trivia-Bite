@@ -21,12 +21,14 @@
     text-align: center;
     padding: 1em;
     @include centerHorizontally();
-    background-color: lightblue;
+    @include boxShadow()
+    background-color: $dark-blue;
+    color: white;
     border-radius: .5em;
     cursor: pointer;
 
     &:hover {
-      background-color: blue
+      @include boxShadowHover()
     }
   }
 }
