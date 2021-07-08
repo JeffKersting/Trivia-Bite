@@ -1,0 +1,31 @@
+.loading-page {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 2;
+  background: linear-gradient(to right, $dark-blue 12em, $light-blue 12em, $light-blue 100%);
+}
+
+.loading {
+  position: fixed;
+  @include centerHorizontally();
+  margin-top: 1em;
+  font-size: 10em;
+  background: linear-gradient(to top, $gold 180px, $light-blue 180px);
+  height: 360px;
+  padding-left: 1.5em;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  transition: transform 1s ease-in;
+  animation: lightbulb 1s ease infinite;
+}
+
+@keyframes lightbulb {
+  0% {
+    height: 360px;
+  }
+  100% {
+    height: 180px
+  }
+}

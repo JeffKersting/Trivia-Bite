@@ -2,8 +2,9 @@ import { GoogleLogin } from 'react-google-login'
 import axiosRequests from '../../api/axios'
 import axios from 'axios'
 
-function Login({ setUser, user }) {
+function Login({ setUser, user, setLoading }) {
   const responseGoogle = async (response) => {
+    setLoading(true)
     const email = await response.profileObj.email
     const userData = await axiosRequests.getUserData(email)
     if (userData) {
@@ -22,7 +23,7 @@ function Login({ setUser, user }) {
       </div>
       <div className='login-section'>
         <p className='site-about'>
-          Welcome to Trivia Bite. Every day there are ten new trivia questions added. You can play alone, join a group a friend has made, or create your own group and invite friends to compete daily.
+          Welcome to Trivia Bite. Every day ten new trivia questions are added. You can play alone, join a group a friend has made, or create your own group and invite friends to compete daily.
         </p>
         <GoogleLogin
           className="google-login"
