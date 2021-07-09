@@ -28,8 +28,7 @@ function Question({ question, submitAnswer }) {
   const checkAnswer = (e) => {
     e.target.innerText === correctAnswer ? answerFeedback(e.target, true) : answerFeedback(e.target, false)
     setTimeout(() => {
-      e.target.innerText === correctAnswer ? submitAnswer(true, e.target) :
-      submitAnswer(false, e.target)
+      e.target.innerText === correctAnswer ? submitAnswer(true, e.target) : submitAnswer(false, e.target)
     }, 500)
   }
 
