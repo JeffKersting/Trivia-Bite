@@ -4,7 +4,6 @@ import axios from 'axios'
 
 function Login({ setUser, user, setLoading }) {
   const responseGoogle = async (response) => {
-    console.log('TESTING')
     setLoading(true)
     const email = await response.profileObj.email
     const userData = await axiosRequests.getUserData(email)

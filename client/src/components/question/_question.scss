@@ -23,9 +23,9 @@
     padding: 1em;
     @include centerHorizontally();
     @include boxShadow()
-    background-color: $dark-blue;
     color: white;
     border-radius: .5em;
+    transition: ease .2s;
     cursor: pointer;
 
     &:hover {
