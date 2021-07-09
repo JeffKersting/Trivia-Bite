@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { GoogleLogin } from 'react-google-login'
 import axiosRequests from '../../api/axios'
 import axios from 'axios'
@@ -27,11 +26,8 @@ function Login({ setUser, user, setLoading }) {
     } else {
       axiosRequests.postUserData(response.profileObj.name, response.profileObj.email)
     }
+    setLoading(true)
   }
-
-  useEffect(() => {
-    return setLoading(true)
-  }, [])
 
   return (
     <div className="login-page">
