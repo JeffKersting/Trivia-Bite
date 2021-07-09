@@ -53,7 +53,6 @@ function Sidebar({ user }) {
     } else {
       return (
         <>
-
           <GroupForm formHandler={formHandler}/>
         </>
       )

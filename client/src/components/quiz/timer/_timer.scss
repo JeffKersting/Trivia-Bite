@@ -11,7 +11,22 @@
 .timer {
   position: absolute;
   height: 15px;
-  background-color: $red;
+  background-color: $green;
   transition: 1s linear;
   border-radius: 4px;
+  animation: timer 90s ease;
+}
+
+@keyframes timer {
+  0% {
+    background-color: $green
+  }
+
+  50% {
+    background-color: $gold
+  }
+
+  100% {
+    background-color: $red
+  }
 }
