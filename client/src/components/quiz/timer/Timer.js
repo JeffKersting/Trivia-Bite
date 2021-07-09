@@ -4,6 +4,10 @@ function Timer({ calculateScore }) {
   let [timer, setTimer] = useState(90)
   let time = 90
 
+  /*
+    Recursive function counts down initial time given, with a conditional check
+    to end the quiz when time runs out
+  */
   const updateTimer = () => {
     time -= 1
     setTimer(time)
@@ -14,6 +18,10 @@ function Timer({ calculateScore }) {
     }
   }
 
+  /*
+    Use effect initally calls recursive updateTimer function,
+    and calls calculateScore (Quiz.js) on component unmount.
+  */
   useEffect(() => {
     updateTimer()
     return () => calculateScore(time)
