@@ -5,6 +5,13 @@ import Home from '../home/Home'
 import Loading from '../loading/Loading'
 
 function App() {
+  /*
+    User is set on login page (automatically redirected). If user has an account,
+    login page will auto-login and redirect to main page
+
+    Loading is for aesthetic reasons, allowing react to properly render,
+    specifically the sidebar component.
+  */
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
 
