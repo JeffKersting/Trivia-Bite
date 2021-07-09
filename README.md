@@ -1,31 +1,44 @@
 # Trivia Bite
 A Trivia App
+Visit the deployed site [here](https://triviabite.herokuapp.com/), and join `Jeffs Group` to compete, or make your own and invite friends!
 
 ### Contributors
-- Jeff Kersting: [github profile](https://github.com/JeffKersting/)|[linkedIn](https://www.linkedin.com/in/jeff-kersting/)
+
+<table>
+    <tr>
+        <td> Jeff Kersting </td>
+    </tr>
+   <td><img src="https://avatars.githubusercontent.com/u/69732297?v=4" alt="Jeff Kersting" width="150" height="auto" /></td>
+</table>
+
+[LinkedIn](https://www.linkedin.com/in/jeff-kersting/) || [Github](https://github.com/JeffKersting)
+
 
 
 #### Compete with friends in daily trivia quizzes.
 - **API** built with Node, Express, postgreSQL, Knex and Google Login.
-- **WebApp** built with React 
+- **WebApp** built with React.
 
 
 ## Features
-- User group creation
-- New questions daily
+- User group creation.
+- New questions daily.
+- Daily leaderboard for groups.
 
 
 ### Desktop
-GIF HERE
+
+- WIP
 
 
 ## Client File Structure 
   
-- Add file structure mockup here
+- WIP
 
 ## Server File Structure 
  
-- Add file structure mockup here
+- WIP
+
 
 ## Setup and Running
 - Prerequisites
@@ -95,7 +108,7 @@ GIF HERE
 ## Author
 <table>
     <tr>
-        <td> Jeff Kersting <a href="https://github.com/JeffKersting">GH</a></td>
+        <td> Jeff Kersting</td>
     </tr>
    <td><img src="https://avatars.githubusercontent.com/u/69732297?v=4" alt="Jeff Kersting" width="150" height="auto" /></td>
 </table>
