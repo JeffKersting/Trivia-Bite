@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { GoogleLogin } from 'react-google-login'
 import axiosRequests from '../../api/axios'
 import axios from 'axios'
@@ -9,7 +10,6 @@ import axios from 'axios'
 */
 function Login({ setUser, user, setLoading }) {
   const responseGoogle = async (response) => {
-    setLoading(true)
     /*
       Email data is retrieved from GoogleLogin component, and is used to
       retrieve users data
@@ -28,6 +28,10 @@ function Login({ setUser, user, setLoading }) {
       axiosRequests.postUserData(response.profileObj.name, response.profileObj.email)
     }
   }
+
+  useEffect(() => {
+    return setLoading(true)
+  }, [])
 
   return (
     <div className="login-page">
