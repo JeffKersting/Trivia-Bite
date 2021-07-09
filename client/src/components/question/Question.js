@@ -20,8 +20,16 @@ function Question({ question, submitAnswer }) {
     return answersArr
   }
 
+  const answerFeedback = (target, result) => {
+    result ? target.style.backgroundColor = '#90EE90' : target.style.backgroundColor = '#F76C6C'
+    setTimeout(() => target.style.backgroundColor = '#24305E', 500)
+  }
+
   const checkAnswer = (e) => {
-    e.target.innerText === correctAnswer ? submitAnswer(true) : submitAnswer(false)
+    e.target.innerText === correctAnswer ? answerFeedback(e.target, true) : answerFeedback(e.target, false)
+    setTimeout(() => {
+      e.target.innerText === correctAnswer ? submitAnswer(true, e.target) : submitAnswer(false, e.target)
+    }, 500)
   }
 
   return (
@@ -31,7 +39,7 @@ function Question({ question, submitAnswer }) {
       <div className='answers'>
       {
         createAnswers().map((answer, index) =>
-          <div onClick={checkAnswer} key={index}>{answer}</div>)
+          <div onClick={checkAnswer} key={index} style={{ backgroundColor: '#24305E' }}>{answer}</div>)
       }
       </div>
 
