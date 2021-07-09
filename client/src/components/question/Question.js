@@ -35,7 +35,7 @@ function Question({ question, submitAnswer }) {
   */
   const answerFeedback = (target, result) => {
     result ? target.style.backgroundColor = '#90EE90' : target.style.backgroundColor = '#F76C6C'
-    setTimeout(() => target.style.backgroundColor = '#24305E', 500)
+    setTimeout(() => target.style.backgroundColor = '#24305E', 400)
   }
 
   /*
