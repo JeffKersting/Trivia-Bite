@@ -1,7 +1,10 @@
 import { useEffect } from 'react'
 
 function Loading({ setLoading }) {
-
+  /*
+    Component automatically unmounts itself after 1 second, allowing for easier
+    renders by updating the loading state (App.js) 
+  */
   useEffect(() => {
     setTimeout(() => setLoading(false), 1000)
   }, [])

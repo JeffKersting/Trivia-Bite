@@ -2,11 +2,26 @@ import { GoogleLogin } from 'react-google-login'
 import axiosRequests from '../../api/axios'
 import axios from 'axios'
 
+/*
+  Login is called when the user initially signs in with a google account,
+  OR when they are redirected to the login page from App.js upon site load.
+  Line 44: isSignedIn allows for login to occur automatically
+*/
 function Login({ setUser, user, setLoading }) {
   const responseGoogle = async (response) => {
     setLoading(true)
+    /*
+      Email data is retrieved from GoogleLogin component, and is used to
+      retrieve users data
+    */
     const email = await response.profileObj.email
     const userData = await axiosRequests.getUserData(email)
+
+    /*
+      A conditional checks for existence of user data, if user has data,
+      they are simply logged in. If user has no data, an axios request
+      adds the user to the database
+    */
     if (userData) {
       setUser(userData)
     } else {
