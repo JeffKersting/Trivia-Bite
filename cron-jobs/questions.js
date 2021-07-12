@@ -1,6 +1,9 @@
 const questionsService = require('../service/questions')
 const fetch = require('node-fetch')
 
+const cleanupString = (string) => {
+  return string.replace(/&quot;/g, '').replace(/&#039;/g, '').replace(/acute;/g, '').replace(/&reg;/g, '').replace(/&trade;/g, '').replace(/&amp;/g, '&').replace(/&/g, '')
+}
 
 const getQuestions = async () => {
   try {
@@ -11,11 +14,11 @@ const getQuestions = async () => {
       const {category, question, correct_answer, incorrect_answers} = questionObj
       const formattedQuestion = {
           category: category,
-          question: question,
-          correct: correct_answer,
-          incorrect1: incorrect_answers[0],
-          incorrect2: incorrect_answers[1],
-          incorrect3: incorrect_answers[2]
+          question: cleanupString(question),
+          correct: cleanupString(correct_answer),
+          incorrect1: cleanupString(incorrect_answers[0]),
+          incorrect2: cleanupString(incorrect_answers[1]),
+          incorrect3: cleanupString(incorrect_answers[2])
         }
       questionsDto.push(formattedQuestion)
     })

@@ -5,7 +5,7 @@ class GetQuestionsDAO {
     const questions = await db('questions').select()
     return questions
   }
-}  
+}
 
 
 module.exports = new GetQuestionsDAO
