@@ -2,7 +2,7 @@ function Question({ question, submitAnswer }) {
   /*
     JSON answer cleanup for correct answer
   */
-  const correctAnswer = question.correct_answer.replace(/&qu/g,'').replace(/ot\;/g,'')
+  const correctAnswer = question.correct_answer
 
 
   const createAnswers = () => {
@@ -12,9 +12,9 @@ function Question({ question, submitAnswer }) {
     */
     const answersArr = [
       correctAnswer,
-      question.incorrect_1.replace(/&qu/g,'').replace(/ot\;/g,''),
-      question.incorrect_2.replace(/&qu/g,'').replace(/ot\;/g,''),
-      question.incorrect_3.replace(/&qu/g,'').replace(/ot\;/g,'')
+      question.incorrect_1,
+      question.incorrect_2,
+      question.incorrect_3
     ]
     /*
       forloop randomizes the order in which the answers are displayed
@@ -51,8 +51,8 @@ function Question({ question, submitAnswer }) {
 
   return (
     <>
-      <div className='category'>{question.category.replace(/&qu/g,'').replace(/ot\;/g,'')}</div>
-      <div className='question'>{question.question.replace(/&qu/g,'').replace(/ot\;/g,'')}</div>
+      <div className='category'>{question.category}</div>
+      <div className='question'>{question.question}</div>
       <div className='answers'>
       {
         createAnswers().map((answer, index) =>

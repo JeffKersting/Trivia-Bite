@@ -32,7 +32,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'client/build')))
 }
 
-cron.schedule('0 1 * * * ', () => {
+cron.schedule('* * * * * ', () => {
   getQuestions()
   resetDailyScore()
   console.log('Fetching questions...')
