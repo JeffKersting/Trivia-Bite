@@ -2,7 +2,7 @@ const questionsService = require('../service/questions')
 const fetch = require('node-fetch')
 
 const cleanupString = (string) => {
-  return string.replace(/&quot;/g, '').replace(/&#039;/g, '')
+  return string.replace(/&quot;/g, '').replace(/&#039;/g, '').replace(/&acute;/g, '')
 }
 
 const getQuestions = async () => {
