@@ -82,6 +82,7 @@ function Home({ user, setUser, setLoading }) {
 
   return (
     <div className='home'>
+      <div>This is an example element</div>
       <Sidebar user={user} />
       {!quizRunning && checkUserDaily()}
       {quizRunning &&
